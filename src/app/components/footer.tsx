@@ -7,69 +7,70 @@ import {
   MastodonLogo,
 } from "@phosphor-icons/react";
 
+const socialLinks = [
+  {
+    href: "https://www.linkedin.com/in/reserban/",
+    icon: LinkedinLogo,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://x.com/reserban",
+    icon: XLogo,
+    label: "X (formerly Twitter)",
+  },
+  {
+    href: "https://fosstodon.org/@reserban",
+    icon: MastodonLogo,
+    label: "Mastodon",
+  },
+  {
+    href: "https://www.youtube.com/@reserban",
+    icon: YoutubeLogo,
+    label: "YouTube",
+  },
+];
+
 const Footer = () => {
   return (
-    <section>
-      <div className="px-4 sm:px-6 container-none">
-        <footer>
-          <div className="flex items-center justify-center">
-            <div className="text-[2rem] sm:text-[6rem] xl:text-[11rem] xl:-mb-8 mb-1 mt-4 sm:mt-0">
-              reserban.com
-            </div>
+    <footer className="bg-background pt-2 sm:pt-0">
+      <div className="container-none mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-center">
+          <div className="text-[2rem] sm:text-[6rem] xl:text-[11rem] xl:-mb-10 xl:-mt-4">
+            reserban.com
           </div>
-          <div className="flex flex-col items-center justify-between gap-4 pb-4 text-lg md:flex-row">
-            <a
-              className="transition-all duration-500 text-md hover:text-primary hover:opacity-70"
-              href="mailto:alex@reserban.com"
-            >
-              alex@reserban.com
-            </a>
+        </div>
+        <div className="flex flex-col items-center justify-between gap-4 pb-4 text-lg md:flex-row">
+          <a
+            className="relative transition-all duration-500 text-md hover:text-primary hover:opacity-70 after:content-[''] after:absolute after:left-0 after:bottom-[1px] after:h-[1px] after:bg-current after:transition-all after:duration-500 after:w-0 hover:after:w-full"
+            href="mailto:alex@reserban.com"
+          >
+            alex@reserban.com
+          </a>
 
-            <ul className="flex items-center space-x-6 text-primary">
-              <li className="font-medium transition-all duration-500 translate-x-0 hover:translate-x-0.5 hover:text-primary hover:opacity-70 ">
+          <ul className="flex items-center space-x-6 text-primary">
+            {socialLinks.map(({ href, icon: Icon, label }) => (
+              <li
+                key={href}
+                className="font-medium transition-all duration-500 translate-x-0 hover:translate-x-0.5 hover:text-primary hover:opacity-70"
+              >
                 <a
-                  href="https://www.linkedin.com/in/reserban/"
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={label}
                 >
-                  <LinkedinLogo className="w-6 h-6" />
+                  <Icon className="w-6 h-6" aria-hidden="true" />
                 </a>
               </li>
-              <li className="font-medium transition-all duration-500 translate-x-0 hover:translate-x-0.5 hover:text-primary hover:opacity-70 ">
-                <a
-                  href="https://x.com/reserban"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <XLogo className="w-6 h-6" />
-                </a>
-              </li>
-              <li className="font-medium transition-all duration-500 translate-x-0 hover:translate-x-0.5 hover:text-primary hover:opacity-70 ">
-                <a
-                  href="https://fosstodon.org/@reserban"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MastodonLogo className="w-6 h-6" />
-                </a>
-              </li>
-              <li className="font-medium transition-all duration-500 translate-x-0 hover:translate-x-0.5 hover:text-primary hover:opacity-70 ">
-                <a
-                  href="https://www.youtube.com/@reserban"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <YoutubeLogo className="w-6 h-6" />
-                </a>
-              </li>
-            </ul>
-            <div className="text-md">
-              built by alex serban © {new Date().getFullYear()}
-            </div>
+            ))}
+          </ul>
+
+          <div className="text-md">
+            built by alex serban © {new Date().getFullYear()}
           </div>
-        </footer>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 };
 

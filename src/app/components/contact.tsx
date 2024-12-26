@@ -48,7 +48,7 @@ const contactLinks = [
     icon: Mail,
   },
   {
-    href: "#",
+    href: "https://forms.gle/rdKaEjfYXkho8coZ7",
     title: "Fill a form with partner request",
     description: "Explain me your great startup idea in a google form.",
     icon: PanelLeft,
