@@ -158,7 +158,14 @@ const MediaItem: React.FC<MediaItemProps> = ({ media }) => {
   if (isVideo) {
     return (
       <div className="w-full h-full">
-        <video src={media} loop autoPlay muted className={commonClasses} />
+        <video
+          src={media}
+          loop
+          autoPlay
+          muted
+          controls={false}
+          className={commonClasses}
+        />
       </div>
     );
   }
