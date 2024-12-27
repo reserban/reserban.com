@@ -1,106 +1,91 @@
-import { Button } from "@/components/ui/button";
+"use client";
 
-const Timeline3 = () => {
+import { Dice6, MapPin, Power } from "lucide-react";
+import Image from "next/image";
+
+const About = () => {
   return (
-    <section className="py-32">
-      <div className="max-w-6xl container-none">
-        <div className="relative grid gap-16 md:grid-cols-2">
-          <div className="top-40 h-fit md:sticky">
-            <p className="font-medium text-muted-foreground">Our Approach</p>
-            <h2 className="mt-4 mb-6 text-4xl font-semibold md:text-5xl">
-              Experience the difference with us
-            </h2>
-            <p className="font-medium md:text-xl">
-              We believe in creating lasting partnerships with our clients.
-            </p>
-            <div className="flex flex-col gap-4 mt-8 lg:flex-row">
-              <Button className="gap-2" size="lg">
-                Start Now
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2">
-                Book a demo
-              </Button>
-            </div>
-          </div>
-          <div className="flex flex-col gap-12 md:gap-20">
-            <div className="p-2 border rounded-xl">
-              <img
-                src="https://shadcnblocks.com/images/block/placeholder-1.svg"
-                alt="placeholder"
-                className="object-cover w-full border border-dashed aspect-video rounded-xl"
+    <section className="pb-8 sm:pt-4">
+      <div className="container-none mx-auto max-w-screen-md px-4 sm:px-0">
+        <div className="relative grid-cols-1 gap-20 lg:grid">
+          <div className="lg:col-span-1">
+            <div className="relative h-[220px] mb-6 sm:mb-6">
+              <Image
+                src="https://framerusercontent.com/images/eLJQffQcNp8Y3Mf9OnAGSkvCM.png?scale-down-to=2048"
+                alt="Contact Me Banner"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover z-10"
               />
-              <div className="p-6">
-                <h3 className="mb-1 text-2xl font-semibold">
-                  Straightforward Pricing
-                </h3>
-                <p className="text-muted-foreground">
-                  Clear, upfront pricing with no hidden fees. Get an instant
-                  quote through our simple online form.
-                </p>
+            </div>
+            <div className="mb-6">
+              <h1 className="mb-1 text-2xl font-medium sm:text-3xl">
+                From 0 to 1
+              </h1>
+              <p className="leading-normal text-md sm:text-xl text-black/50">
+                I began my pro design career in 2020 and have been through a lot
+                of phases since. These days, I’m all about the tech world,
+                designing and building useful products. I’m passionate about
+                flat design and the impact of minimalist work.
+              </p>
+            </div>
+
+            <div className="ml-3.5">
+              <div className="relative flex items-start pb-7">
+                <div className="absolute top-[2.75rem] h-[calc(100%-2.75rem)] w-px bg-border/70"></div>
+                <div className="absolute ml-[-14px] py-2">
+                  <div className="flex items-center justify-center size-7 shrink-0">
+                    <Power className="size-6" />
+                  </div>
+                </div>
+                <div className="pl-8">
+                  <h3 className="mt-2 text-lg font-medium">
+                    2024 - Power of Launching
+                  </h3>
+                  <p className="text-black/50">
+                    After working with a bunch of founders, I decided to dive
+                    into building products myself. That’s how I started creating
+                    my own tools to tackle problems, all under Unzet venture
+                    studio.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="p-2 border rounded-xl">
-              <img
-                src="https://shadcnblocks.com/images/block/placeholder-2.svg"
-                alt="placeholder"
-                className="object-cover w-full border border-dashed aspect-video rounded-xl"
-              />
-              <div className="p-6">
-                <h3 className="mb-1 text-2xl font-semibold">
-                  Structured Development
-                </h3>
-                <p className="text-muted-foreground">
-                  Regular progress updates and defined milestones ensure
-                  complete visibility throughout your project&apos;s lifecycle.
-                </p>
+              <div className="relative flex items-start pb-7">
+                <div className="absolute top-[2.75rem] h-[calc(100%-2.75rem)] w-px bg-border/70"></div>
+                <div className="absolute ml-[-14px] py-2">
+                  <div className="flex items-center justify-center size-7 shrink-0">
+                    <Dice6 className="size-5" />
+                  </div>
+                </div>
+                <div className="pl-8">
+                  <h3 className="mt-2 text-lg font-medium">
+                    2022 - Name in the Game
+                  </h3>
+                  <p className="text-black/50">
+                    I launched my first business Takameru, an agency centered on
+                    design storytelling and branding. It later evolved into
+                    Blureo, which I exited a year later.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="p-2 border rounded-xl">
-              <img
-                src="https://shadcnblocks.com/images/block/placeholder-3.svg"
-                alt="placeholder"
-                className="object-cover w-full border border-dashed aspect-video rounded-xl"
-              />
-              <div className="p-6">
-                <h3 className="mb-1 text-2xl font-semibold">
-                  Scalable Architecture
-                </h3>
-                <p className="text-muted-foreground">
-                  Built with scalability in mind, our solutions grow with your
-                  needs while maintaining consistent performance.
-                </p>
-              </div>
-            </div>
-            <div className="p-2 border rounded-xl">
-              <img
-                src="https://shadcnblocks.com/images/block/placeholder-4.svg"
-                alt="placeholder"
-                className="object-cover w-full border border-dashed aspect-video rounded-xl"
-              />
-              <div className="p-6">
-                <h3 className="mb-1 text-2xl font-semibold">
-                  Dedicated Support
-                </h3>
-                <p className="text-muted-foreground">
-                  Access our dedicated support team through multiple channels
-                  for quick resolution of any concerns.
-                </p>
-              </div>
-            </div>
-            <div className="p-2 border rounded-xl">
-              <img
-                src="https://shadcnblocks.com/images/block/placeholder-5.svg"
-                alt="placeholder"
-                className="object-cover w-full border border-dashed aspect-video rounded-xl"
-              />
-              <div className="p-6">
-                <h3 className="mb-1 text-2xl font-semibold">
-                  Satisfaction Guaranteed
-                </h3>
-                <p className="text-muted-foreground">
-                  Your satisfaction is our priority. If our solution
-                  doesn&apos;t meet your expectations.
-                </p>
+              <div className="relative flex items-start pb-2">
+                <div className="absolute top-[2.75rem] h-[calc(100%-2.75rem)] w-px bg-border/70"></div>
+                <div className="absolute ml-[-14px] py-2">
+                  <div className="flex items-center justify-center size-7 shrink-0">
+                    <MapPin className="size-5" />
+                  </div>
+                </div>
+                <div className="pl-8">
+                  <h3 className="mt-2 text-lg font-medium">
+                    2020 - Jack of all Design
+                  </h3>
+                  <p className="text-black/50">
+                    Early on, I took on every project I could find, which gave
+                    me tons of hands-on experience in industries beyond tech -
+                    like consulting, fashion, nutrition, and more.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -110,4 +95,4 @@ const Timeline3 = () => {
   );
 };
 
-export default Timeline3;
+export default About;

@@ -1,5 +1,4 @@
 import Contact from "../components/contact";
-import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 
 export default function Home() {
@@ -7,7 +6,6 @@ export default function Home() {
     <section id="homepage" className="selection:bg-black selection:text-white">
       <Navbar />
       <Contact />
-      <Footer />
     </section>
   );
 }

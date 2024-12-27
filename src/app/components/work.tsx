@@ -1,15 +1,14 @@
-import { Suspense } from "react";
+"use client";
+
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FastForward, BookCheck } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/ui/carousel-home";
+import { useState, useEffect } from "react";
 
 interface Project {
   title: string;
@@ -47,14 +46,7 @@ const projectsData: Project[] = [
     carouselEnabled: false,
     column: 3,
   },
-  {
-    title: "App Design - Sereso",
-    images: [
-      "https://framerusercontent.com/images/RwqgXO6vy6UJaIOWYndxgtL3AI.png?scale-down-to=2048",
-    ],
-    carouselEnabled: false,
-    column: 1,
-  },
+
   {
     title: "Design & Product - Azignera",
     images: [
@@ -64,70 +56,67 @@ const projectsData: Project[] = [
     carouselEnabled: true,
     column: 2,
   },
+  {
+    title: "Design & Product - Azignera",
+    images: [
+      "https://framerusercontent.com/images/G3BNSqkgeAiojXCruwWMSOi0Q.png?scale-down-to=2048",
+    ],
+    carouselEnabled: false,
+    column: 3,
+  },
+  {
+    title: "Design & Product - Azignera",
+    images: [
+      "https://framerusercontent.com/images/4NYehgBxU4hktqsmLAiYrnhPk.png?scale-down-to=2048",
+    ],
+    carouselEnabled: false,
+    column: 1,
+  },
 ];
 
+const useWindowWidth = () => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return width;
+};
+
 const Work = () => {
+  const windowWidth = useWindowWidth();
   const columns: Project[][] = [[], [], []];
   projectsData.forEach((item: Project) => {
     columns[item.column - 1].push(item);
   });
 
-  return (
-    <section id="work" aria-label="Work Showcase">
-      <div className="px-4 mb-4 sm:px-6 container-none">
-        <Suspense fallback={<div>Loading...</div>}>
-          <WorkTabs columns={columns} />
-        </Suspense>
-      </div>
-    </section>
-  );
-};
+  const tabletColumns: Project[][] = [[...columns[0]], [...columns[1]]];
 
-const WorkTabs = ({ columns }: { columns: Project[][] }) => {
+  columns[2].forEach((item, index) => {
+    tabletColumns[index % 2].push(item);
+  });
+
+  const displayColumns =
+    windowWidth >= 640 && windowWidth < 1024 ? tabletColumns : columns;
+
   return (
-    <Tabs defaultValue="showcase">
-      <div className="flex justify-center mb-8">
-        <TabsList>
-          <TabsTrigger
-            value="showcase"
-            className="flex items-center justify-center w-full gap-1 text-xs sm:text-sm xs:w-auto"
-          >
-            <FastForward className="size-3 sm:size-4" />
-            Work Showcase
-          </TabsTrigger>
-          <TabsTrigger
-            value="case-studies"
-            className="flex items-center justify-center w-full gap-1 text-xs opacity-50 cursor-not-allowed sm:text-sm xs:w-auto"
-            disabled
-          >
-            <BookCheck className="size-3 sm:size-4" />
-            Case Studies (Soon)
-          </TabsTrigger>
-        </TabsList>
-      </div>
-      <TabsContent value="showcase">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {columns.map((column: Project[], columnIndex) => (
-            <div key={columnIndex} className="flex flex-col gap-4">
+    <section id="work" aria-label="Work Showcase" className="relative z-0">
+      <div className="px-4 pb-6 sm:pb-12 sm:px-6 container-none">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
+          {displayColumns.map((column: Project[], columnIndex) => (
+            <div key={columnIndex} className="flex flex-col gap-4 ">
               {column.map((item: Project, itemIndex) => (
                 <ProjectItem key={itemIndex} item={item} />
               ))}
             </div>
           ))}
         </div>
-      </TabsContent>
-      <TabsContent
-        value="case-studies"
-        className="flex flex-col items-center justify-center gap-10 mt-0"
-      >
-        <div className="flex flex-col items-center w-full gap-5 p-24 border">
-          <Badge variant="outline">Coming Soon</Badge>
-          <h3 className="max-w-lg text-xl font-medium text-center lg:text-2xl">
-            Case studies are on their way.
-          </h3>
-        </div>
-      </TabsContent>
-    </Tabs>
+      </div>
+    </section>
   );
 };
 
@@ -155,7 +144,7 @@ const ProjectItem = ({ item }: { item: Project }) => {
         )}
       </div>
       <div className="flex flex-col pt-2 bg-white dark:bg-gray-800">
-        <h2 className="text-sm font-medium text-center sm:text-md text-muted-foreground">
+        <h2 className="font-medium text-center text-md sm:text-md text-muted-foreground">
           {item.title}
         </h2>
       </div>

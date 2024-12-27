@@ -1,4 +1,4 @@
-import Footer from "./components/footer";
+import CTA from "./components/cta";
 import Hero from "./components/hero";
 import Navbar from "./components/navbar";
 import Work from "./components/work";
@@ -9,7 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Work />
-      <Footer />
+      <CTA />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
