@@ -1,76 +1,68 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel-home";
 import { useState, useEffect } from "react";
 
 interface Project {
   title: string;
   content?: string;
   images: string[];
-  carouselEnabled: boolean;
   column: number;
+  columnId?: number;
 }
 
 const projectsData: Project[] = [
   {
-    title: "Naming, Branding & Web - Inereto",
+    title: "Branding & Web - Inereto",
     content: "This is some text content for performance.",
     images: [
-      "https://framerusercontent.com/assets/WJj09vWahaQMHcvrapBqN2rLY.mp4",
-      "https://framerusercontent.com/assets/xSlYttnWuXABpFpKmu62yTzAg.mp4",
+      "https://framerusercontent.com/assets/VYTmNcAUlHgvm39ptrfWy2aGQlM.mp4",
     ],
-    carouselEnabled: true,
     column: 1,
-  },
-  {
-    title: "Branding & Website - Shiftintech",
-    images: [
-      "https://framerusercontent.com/images/IGZAPTAZVeTyX9YdJ2xbJEU6W4.png?scale-down-to=2048",
-      "https://framerusercontent.com/images/wZuWxwOGnNLygymILzg8wg4MwA.png?scale-down-to=2048",
-    ],
-    carouselEnabled: true,
-    column: 2,
-  },
-  {
-    title: "Logo Design - Kubeark",
-    images: [
-      "https://framerusercontent.com/images/Aktg9tHRjRF8AbKUB0ClsvB2rQ.png?scale-down-to=2048",
-    ],
-    carouselEnabled: false,
-    column: 3,
+    columnId: 2,
   },
 
   {
-    title: "Design & Product - Azignera",
+    title: "Logo - Kunak",
     images: [
-      "https://framerusercontent.com/assets/0rl9jftPmbJI7JxkyUQ10tdxg90.mp4",
-      "https://framerusercontent.com/assets/bs4QE7d4dYjCHmHAUuANwqm40.mp4",
+      "https://framerusercontent.com/images/ArwBhul7XwbMb1q34gJFSaMU7Y.png?scale-down-to=2048",
     ],
-    carouselEnabled: true,
-    column: 2,
-  },
-  {
-    title: "Design & Product - Azignera",
-    images: [
-      "https://framerusercontent.com/images/G3BNSqkgeAiojXCruwWMSOi0Q.png?scale-down-to=2048",
-    ],
-    carouselEnabled: false,
     column: 3,
+    columnId: 1,
+  },
+
+  {
+    title: "Proposal - X.com",
+    images: [
+      "https://framerusercontent.com/images/K5keSh6iSSOB8gmIQvilKcxaJVw.png?scale-down-to=2048",
+    ],
+    column: 2,
+    columnId: 1,
   },
   {
-    title: "Design & Product - Azignera",
+    title: "Identity - Hirepill",
     images: [
-      "https://framerusercontent.com/images/4NYehgBxU4hktqsmLAiYrnhPk.png?scale-down-to=2048",
+      "https://framerusercontent.com/images/Ra3lEMm5yKrvyEDiupwEGTWXJHM.png?scale-down-to=2048",
     ],
-    carouselEnabled: false,
+    column: 2,
+    columnId: 1,
+  },
+
+  {
+    title: "Identity - Hirepill",
+    images: [
+      "https://framerusercontent.com/images/lXbC6JKsDsjzWCeOx9x4o5BdDs.png?scale-down-to=2048",
+    ],
+    column: 3,
+    columnId: 1,
+  },
+  {
+    title: "UI/UX - Wellnessentially",
+    images: [
+      "https://framerusercontent.com/images/BEGeHC3Q3oJZqnNcFrjLaZrsvBc.png?scale-down-to=2048",
+    ],
     column: 1,
+    columnId: 1,
   },
 ];
 
@@ -90,7 +82,16 @@ const useWindowWidth = () => {
 const Work = () => {
   const windowWidth = useWindowWidth();
   const columns: Project[][] = [[], [], []];
-  projectsData.forEach((item: Project) => {
+
+  // Sort projects by column and columnId before distributing
+  const sortedProjects = [...projectsData].sort((a, b) => {
+    if (a.column === b.column) {
+      return (a.columnId || 0) - (b.columnId || 0);
+    }
+    return a.column - b.column;
+  });
+
+  sortedProjects.forEach((item: Project) => {
     columns[item.column - 1].push(item);
   });
 
@@ -124,24 +125,7 @@ const ProjectItem = ({ item }: { item: Project }) => {
   return (
     <div className="break-inside-avoid">
       <div className="relative w-full">
-        {item.carouselEnabled ? (
-          <Carousel className="w-full">
-            <CarouselContent>
-              {item.images.map((media, mediaIndex) => (
-                <CarouselItem key={mediaIndex}>
-                  <MediaItem
-                    media={media}
-                    alt={`${item.title} - Image ${mediaIndex + 1}`}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute z-10 bottom-2 left-2" />
-            <CarouselNext className="absolute z-10 bottom-2 right-2" />
-          </Carousel>
-        ) : (
-          <MediaItem media={item.images[0]} alt={item.title} />
-        )}
+        <MediaItem media={item.images[0]} alt={item.title} />
       </div>
       <div className="flex flex-col pt-2 bg-white dark:bg-gray-800">
         <h2 className="font-medium text-center text-md sm:text-md text-muted-foreground">
@@ -159,18 +143,18 @@ interface MediaItemProps {
 
 const MediaItem: React.FC<MediaItemProps> = ({ media, alt }) => {
   const isVideo = media.endsWith(".mp4");
-  const commonClasses = "w-full h-auto object-cover";
+  const commonClasses = "w-full h-auto object-cover rounded-xl";
 
   if (isVideo) {
     return (
-      <div className="w-full h-full">
+      <div className="w-full aspect-video">
         <video
           src={media}
           loop
           autoPlay
           muted
           playsInline
-          preload="none"
+          preload="metadata"
           className={commonClasses}
           aria-label={alt}
         />
@@ -179,7 +163,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ media, alt }) => {
   }
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full aspect-video">
       <Image
         src={media}
         alt={alt}
@@ -187,9 +171,30 @@ const MediaItem: React.FC<MediaItemProps> = ({ media, alt }) => {
         height={600}
         className={commonClasses}
         loading="lazy"
+        quality={85}
+        placeholder="blur"
+        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
       />
     </div>
   );
 };
+
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#333" offset="20%" />
+      <stop stop-color="#222" offset="50%" />
+      <stop stop-color="#333" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#333" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+</svg>`;
+
+const toBase64 = (str: string) =>
+  typeof window === "undefined"
+    ? Buffer.from(str).toString("base64")
+    : window.btoa(str);
 
 export default Work;
