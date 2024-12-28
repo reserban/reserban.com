@@ -13,13 +13,12 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: "Branding & Web - Inereto",
-    content: "This is some text content for performance.",
+    title: "Branding - Inereto",
     images: [
       "https://framerusercontent.com/assets/VYTmNcAUlHgvm39ptrfWy2aGQlM.mp4",
     ],
     column: 1,
-    columnId: 2,
+    columnId: 1,
   },
 
   {
@@ -49,12 +48,12 @@ const projectsData: Project[] = [
   },
 
   {
-    title: "Identity - Hirepill",
+    title: "App - Sereso",
     images: [
-      "https://framerusercontent.com/images/lXbC6JKsDsjzWCeOx9x4o5BdDs.png?scale-down-to=2048",
+      "https://framerusercontent.com/images/JlagKisDvG2j7zGIHfxYEEoxdeE.png?scale-down-to=2048",
     ],
     column: 3,
-    columnId: 1,
+    columnId: 2,
   },
   {
     title: "UI/UX - Wellnessentially",
@@ -62,7 +61,39 @@ const projectsData: Project[] = [
       "https://framerusercontent.com/images/BEGeHC3Q3oJZqnNcFrjLaZrsvBc.png?scale-down-to=2048",
     ],
     column: 1,
-    columnId: 1,
+    columnId: 2,
+  },
+  {
+    title: "Branding - Unzet",
+    images: [
+      "https://framerusercontent.com/assets/4DanTqR213kCeegnRMgxHzqlhWo.mp4",
+    ],
+    column: 3,
+    columnId: 3,
+  },
+  {
+    title: "Pitch Deck - Wellnessentially",
+    images: [
+      "https://framerusercontent.com/images/eVf1HD97keVXsmpvPP5VhaTrpk.png?scale-down-to=2048",
+    ],
+    column: 2,
+    columnId: 3,
+  },
+  {
+    title: "Chrome Extension - Persuwise",
+    images: [
+      "https://framerusercontent.com/images/P9QjCahGHGzEUkvSEWKmBgrkZQ.png?scale-down-to=2048",
+    ],
+    column: 1,
+    columnId: 2,
+  },
+  {
+    title: "Logo - Malzo",
+    images: [
+      "https://framerusercontent.com/images/3oPPDKnLEZd2WMJ83PccTnJvw.png?scale-down-to=2048",
+    ],
+    column: 1,
+    columnId: 4,
   },
 ];
 
@@ -83,7 +114,6 @@ const Work = () => {
   const windowWidth = useWindowWidth();
   const columns: Project[][] = [[], [], []];
 
-  // Sort projects by column and columnId before distributing
   const sortedProjects = [...projectsData].sort((a, b) => {
     if (a.column === b.column) {
       return (a.columnId || 0) - (b.columnId || 0);
@@ -107,9 +137,9 @@ const Work = () => {
   return (
     <section id="work" aria-label="Work Showcase" className="relative z-0">
       <div className="px-4 pb-6 sm:pb-12 sm:px-6 container-none">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-3">
           {displayColumns.map((column: Project[], columnIndex) => (
-            <div key={columnIndex} className="flex flex-col gap-4 ">
+            <div key={columnIndex} className="flex flex-col gap-5 ">
               {column.map((item: Project, itemIndex) => (
                 <ProjectItem key={itemIndex} item={item} />
               ))}
@@ -127,8 +157,8 @@ const ProjectItem = ({ item }: { item: Project }) => {
       <div className="relative w-full">
         <MediaItem media={item.images[0]} alt={item.title} />
       </div>
-      <div className="flex flex-col pt-2 bg-white dark:bg-gray-800">
-        <h2 className="font-medium text-center text-md sm:text-md text-muted-foreground">
+      <div className="flex flex-col pt-1.5 bg-white dark:bg-gray-800">
+        <h2 className="font-medium text-center text-md sm:text-sm text-muted-foreground">
           {item.title}
         </h2>
       </div>
@@ -143,7 +173,8 @@ interface MediaItemProps {
 
 const MediaItem: React.FC<MediaItemProps> = ({ media, alt }) => {
   const isVideo = media.endsWith(".mp4");
-  const commonClasses = "w-full h-auto object-cover rounded-xl";
+  const commonClasses =
+    "w-full h-auto object-cover rounded-xl border border-black/10";
 
   if (isVideo) {
     return (
