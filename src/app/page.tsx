@@ -20,11 +20,10 @@ export default function Home() {
             url: "https://reserban.com",
             jobTitle: "Visual and Product Designer",
             description:
-              "I'm Alex Serban, a visual and product designer specializing in creating innovative solutions for startups.",
+              "I'm Serban, a visual & product designer with a real passion for technology and startups",
             sameAs: [
-              "https://www.linkedin.com/in/alexserban",
-              "https://twitter.com/reserban",
-              "https://www.behance.net/alexserban",
+              "https://www.linkedin.com/in/reserban",
+              "https://x.com/reserban",
             ],
           }),
         }}
