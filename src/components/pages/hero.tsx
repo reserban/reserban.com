@@ -3,7 +3,6 @@
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const Hero = () => {
@@ -14,7 +13,7 @@ const Hero = () => {
           href="/contact"
           className="inline-flex items-center gap-3 mx-auto mb-5 opacity-75 sm:mb-4 group"
         >
-          <Badge variant="outline">
+          <Badge variant="outline" className="py-2">
             Open For Work{" "}
             <ChevronRight className="-mr-1 group-hover:translate-x-0.5 translate-x-0 transition-all duration-500 size-4" />
           </Badge>
@@ -33,14 +32,12 @@ const Hero = () => {
           startups.
         </h1>
         <div>
-          <Button
-            variant="link"
-            asChild
-            size="small"
-            className="relative text-black/60 text-md lg:text-lg after:content-[''] after:absolute after:left-0 after:bottom-[1px] after:h-[1px] after:bg-current after:transition-all after:duration-500 after:w-0 hover:after:w-full"
+          <Link
+            href="/about"
+            className="relative font-medium text-black/60 text-md lg:text-lg after:content-[''] after:absolute after:left-0 after:bottom-[1px] after:h-[1px] after:bg-current after:transition-all after:duration-500 after:w-0 hover:after:w-full"
           >
-            <Link href="/about">more about me...</Link>
-          </Button>
+            more about me...
+          </Link>
         </div>
       </div>
     </section>

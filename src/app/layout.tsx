@@ -1,65 +1,27 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import BadgeComponent from "../components/pages/badge";
 
 const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
   subsets: ["latin"],
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Reserban | Visual & Product Designer for Startups",
+    default: "Reserban",
     template: "%s | Reserban",
   },
   description:
-    "Explore my portfolio. I'm Serban, a visual & product designer with a real passion for technology and startups",
-  keywords: [
-    "Alex Serban",
-    "Serban Alex",
-    "visual designer",
-    "product designer",
-    "startup design",
-    "UI/UX",
-    "portfolio",
-  ],
-  authors: [{ name: "Alex Serban" }],
-  creator: "Alex Serban",
-  publisher: "Alex Serban",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL("https://reserban.com"),
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Alex Serban | Visual & Product Designer for Startups",
-    description:
-      "Explore my portfolio. I'm Serban, a visual & product designer with a real passion for technology and startups",
-    url: "https://reserban.com",
-    siteName: "Reserban",
-    images: [
-      {
-        url: "https://reserban.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Reserban - Visual & Product Designer",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Reserban | Visual & Product Designer for Startups",
-    description:
-      "Explore my portfolio. I'm Serban, a visual & product designer with a real passion for technology and startups",
-    images: ["https://reserban.com/twitter-image.jpg"],
-    creator: "@reserban",
-  },
+    "I'm Serban, a visual & product designer with a real passion for technology and startups.",
+
+  metadataBase: new URL("https://www.reserban.com"),
+  keywords: ["keyword1", "keyword2", "keyword3"],
+  authors: [{ name: "Reserban" }],
+  creator: "Reserban/Unzet",
+  publisher: "Reserban/Unzet",
+
   robots: {
     index: true,
     follow: true,
@@ -71,6 +33,31 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.reserban.com",
+    title: "Reserban",
+    description:
+      "I'm Serban, a visual & product designer with a real passion for technology and startups.",
+    siteName: "Reserban",
+    images: [
+      {
+        url: "https://www.reserban.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Serban Standing",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Reserban",
+    description:
+      "I'm Serban, a visual & product designer with a real passion for technology and startups.",
+    creator: "@reserban",
+    images: ["https://www.reserban.com/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -80,7 +67,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} antialiased`}>{children}</body>
+      <body
+        className={`${dmSans.variable} antialiased selection:bg-black selection:text-white`}
+      >
+        {children}
+        <BadgeComponent />
+      </body>
     </html>
   );
 }

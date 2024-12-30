@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
 const CTA = () => {
   return (
@@ -10,7 +11,7 @@ const CTA = () => {
           </h3>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center text-black h-10 px-3 py-1.5 sm:px-4 sm:py-2 text-sm duration-500 font-medium transition-colors rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-muted hover:bg-muted/80"
+            className={buttonVariants({ variant: "default" })}
           >
             Contact Me
           </Link>

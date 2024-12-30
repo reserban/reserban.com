@@ -20,6 +20,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { buttonVariants } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -45,6 +46,16 @@ const Navbar = () => {
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuLink
+                      href="https://github.com/reserban/reserban.com"
+                      className={navigationMenuTriggerStyle()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Github
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuLink
                       href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
                       className={navigationMenuTriggerStyle()}
                       target="_blank"
@@ -68,7 +79,7 @@ const Navbar = () => {
           <div className="items-center hidden gap-4 lg:flex">
             <Link
               href="/contact"
-              className="inline-flex duration-500 items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+              className={buttonVariants({ variant: "default" })}
             >
               Contact
             </Link>
@@ -90,6 +101,14 @@ const Navbar = () => {
               <div className="flex flex-col">
                 <div className="flex flex-col gap-6 pt-5">
                   <a
+                    href="https://github.com/reserban/reserban.com"
+                    className="font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </a>
+                  <a
                     href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
                     className="font-medium"
                     target="_blank"
@@ -97,14 +116,14 @@ const Navbar = () => {
                   >
                     Resume
                   </a>
-                  <a href="/about" className="font-medium">
+                  <Link href="/about" className="font-medium">
                     About
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex flex-col gap-4 mt-6">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+                    className={buttonVariants({ variant: "default" })}
                   >
                     Contact
                   </Link>

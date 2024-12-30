@@ -1,9 +1,9 @@
-import Contact from "../components/contact";
-import Navbar from "../components/navbar";
+import Contact from "../../components/pages/contact";
+import Navbar from "../../components/pages/navbar";
 
 export default function Home() {
   return (
-    <section id="homepage" className="selection:bg-black selection:text-white">
+    <section id="homepage">
       <Navbar />
       <Contact />
     </section>

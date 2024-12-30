@@ -1,9 +1,9 @@
-import Navbar from "../components/navbar";
-import About from "../components/about";
+import About from "../../components/pages/about";
+import Navbar from "../../components/pages/navbar";
 
 export default function Home() {
   return (
-    <section id="homepage" className="selection:bg-black selection:text-white">
+    <section id="homepage">
       <Navbar />
       <About />
     </section>
