@@ -11,92 +11,6 @@ interface Project {
   columnId?: number;
 }
 
-const projectsData: Project[] = [
-  {
-    title: "Branding - Inereto",
-    images: [
-      "https://framerusercontent.com/assets/VYTmNcAUlHgvm39ptrfWy2aGQlM.mp4",
-    ],
-    column: 1,
-    columnId: 1,
-  },
-
-  {
-    title: "Logo - Kunak",
-    images: [
-      "https://framerusercontent.com/images/ArwBhul7XwbMb1q34gJFSaMU7Y.png?scale-down-to=2048",
-    ],
-    column: 3,
-    columnId: 1,
-  },
-
-  {
-    title: "Proposal - X.com",
-    images: [
-      "https://framerusercontent.com/images/K5keSh6iSSOB8gmIQvilKcxaJVw.png?scale-down-to=2048",
-    ],
-    column: 2,
-    columnId: 1,
-  },
-  {
-    title: "Identity - Hirepill",
-    images: [
-      "https://framerusercontent.com/images/Ra3lEMm5yKrvyEDiupwEGTWXJHM.png?scale-down-to=2048",
-    ],
-    column: 2,
-    columnId: 1,
-  },
-
-  {
-    title: "App - Sereso",
-    images: [
-      "https://framerusercontent.com/images/JlagKisDvG2j7zGIHfxYEEoxdeE.png?scale-down-to=2048",
-    ],
-    column: 3,
-    columnId: 2,
-  },
-  {
-    title: "UI/UX - Wellnessentially",
-    images: [
-      "https://framerusercontent.com/images/BEGeHC3Q3oJZqnNcFrjLaZrsvBc.png?scale-down-to=2048",
-    ],
-    column: 1,
-    columnId: 2,
-  },
-  {
-    title: "Branding - Unzet",
-    images: [
-      "https://framerusercontent.com/assets/4DanTqR213kCeegnRMgxHzqlhWo.mp4",
-    ],
-    column: 3,
-    columnId: 3,
-  },
-  {
-    title: "Pitch Deck - Wellnessentially",
-    images: [
-      "https://framerusercontent.com/images/eVf1HD97keVXsmpvPP5VhaTrpk.png?scale-down-to=2048",
-    ],
-    column: 2,
-    columnId: 3,
-  },
-  {
-    title: "Chrome Extension - Persuwise",
-    images: [
-      "https://framerusercontent.com/images/P9QjCahGHGzEUkvSEWKmBgrkZQ.png?scale-down-to=2048",
-    ],
-    column: 1,
-    columnId: 2,
-  },
-  {
-    title: "Logo - Malzo",
-    images: [
-      "https://framerusercontent.com/images/3oPPDKnLEZd2WMJ83PccTnJvw.png?scale-down-to=2048",
-    ],
-    column: 1,
-    columnId: 4,
-  },
-];
-
 const useWindowWidth = () => {
   const [width, setWidth] = useState(0);
 
@@ -111,8 +25,21 @@ const useWindowWidth = () => {
 };
 
 const Work = () => {
+  const [projectsData, setProjectsData] = useState<Project[]>([]);
   const windowWidth = useWindowWidth();
   const columns: Project[][] = [[], [], []];
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const response = await fetch(
+        "https://reserban.github.io/projects.json/projects.json"
+      );
+      const data: Project[] = await response.json();
+      setProjectsData(data);
+    };
+
+    fetchProjects();
+  }, []);
 
   const sortedProjects = [...projectsData].sort((a, b) => {
     if (a.column === b.column) {
