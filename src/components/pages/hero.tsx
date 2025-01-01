@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 
 const Hero = () => {
   return (
-    <section className="relative pt-2 pb-8 sm:pt-6 lg:pt-4 sm:pb-20 lg:pb-24">
+    <section className="relative pt-6 pb-16 sm:pt-6 lg:pt-4 sm:pb-20 lg:pb-24">
       <div className="relative flex flex-col items-center px-2 text-center container-none">
         <Link
           href="/contact"

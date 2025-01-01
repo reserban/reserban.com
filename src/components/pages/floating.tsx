@@ -12,7 +12,7 @@ const BadgeComponent = () => {
         rel="noopener noreferrer"
       >
         <Badge variant="secondary" className="py-2 shadow-sm">
-          Built with CUA 1.0.1
+          Built with CUA
         </Badge>
       </Link>
     </div>
