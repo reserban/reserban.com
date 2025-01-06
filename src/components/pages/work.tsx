@@ -7,8 +7,12 @@ interface Project {
   title: string;
   content?: string;
   images: string[];
-  column: number;
-  columnId?: number;
+}
+
+interface ProjectsData {
+  column1: Project[];
+  column2: Project[];
+  column3: Project[];
 }
 
 const useWindowWidth = () => {
@@ -25,38 +29,35 @@ const useWindowWidth = () => {
 };
 
 const Work = () => {
-  const [projectsData, setProjectsData] = useState<Project[]>([]);
+  const [projectsData, setProjectsData] = useState<ProjectsData>({
+    column1: [],
+    column2: [],
+    column3: [],
+  });
   const windowWidth = useWindowWidth();
-  const columns: Project[][] = [[], [], []];
 
   useEffect(() => {
     const fetchProjects = async () => {
       const response = await fetch(
         "https://reserban.github.io/projects.json/projects.json"
       );
-      const data: Project[] = await response.json();
+      const data: ProjectsData = await response.json();
       setProjectsData(data);
     };
 
     fetchProjects();
   }, []);
 
-  const sortedProjects = [...projectsData].sort((a, b) => {
-    if (a.column === b.column) {
-      return (a.columnId || 0) - (b.columnId || 0);
-    }
-    return a.column - b.column;
-  });
+  const columns = [
+    projectsData.column1,
+    projectsData.column2,
+    projectsData.column3,
+  ];
 
-  sortedProjects.forEach((item: Project) => {
-    columns[item.column - 1].push(item);
-  });
-
-  const tabletColumns: Project[][] = [[...columns[0]], [...columns[1]]];
-
-  columns[2].forEach((item, index) => {
-    tabletColumns[index % 2].push(item);
-  });
+  const tabletColumns: Project[][] = [
+    [...projectsData.column1],
+    [...projectsData.column2, ...projectsData.column3],
+  ];
 
   const displayColumns =
     windowWidth >= 640 && windowWidth < 1024 ? tabletColumns : columns;
