@@ -82,7 +82,7 @@ const Work = () => {
 const ProjectItem = ({ item }: { item: Project }) => {
   return (
     <div className="break-inside-avoid">
-      <div className="relative w-full">
+      <div className="relative">
         <MediaItem media={item.images[0]} alt={item.title} />
       </div>
       <div className="flex flex-col pt-1.5 bg-white dark:bg-gray-800">
@@ -102,11 +102,11 @@ interface MediaItemProps {
 const MediaItem: React.FC<MediaItemProps> = ({ media, alt }) => {
   const isVideo = media.endsWith(".mp4");
   const commonClasses =
-    "w-full h-auto object-cover rounded-xl border border-black/10";
+    "w-full h-full object-cover rounded-xl border border-black/10";
 
   if (isVideo) {
     return (
-      <div className="w-full aspect-video">
+      <div className="relative pt-[56.25%]">
         <video
           src={media}
           loop
@@ -114,7 +114,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ media, alt }) => {
           muted
           playsInline
           preload="metadata"
-          className={commonClasses}
+          className={`${commonClasses} absolute inset-0`}
           aria-label={alt}
         />
       </div>
@@ -122,7 +122,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ media, alt }) => {
   }
 
   return (
-    <div className="w-full aspect-video">
+    <div className="relative">
       <Image
         src={media}
         alt={alt}
