@@ -16,6 +16,11 @@ You can copy and change it using [Create Next App](https://nextjs.org/docs/api-r
 ```
 npx create-next-app -e https://github.com/reserban/reserban.com
 ```
+You can copy the projects json from here:
+
+```
+https://github.com/reserban/projects.json
+```
 
 ### Development
 
