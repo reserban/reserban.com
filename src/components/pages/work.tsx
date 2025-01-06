@@ -55,8 +55,17 @@ const Work = () => {
   ];
 
   const tabletColumns: Project[][] = [
-    [...projectsData.column1],
-    [...projectsData.column2, ...projectsData.column3],
+    [
+      ...projectsData.column1,
+      ...projectsData.column3.slice(
+        0,
+        Math.ceil(projectsData.column3.length / 2)
+      ),
+    ],
+    [
+      ...projectsData.column2,
+      ...projectsData.column3.slice(Math.ceil(projectsData.column3.length / 2)),
+    ],
   ];
 
   const displayColumns =
