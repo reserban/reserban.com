@@ -1,7 +1,7 @@
 "use client";
 
 import { MenuIcon } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -25,6 +25,10 @@ import { buttonVariants } from "@/components/ui/button";
 const Navbar = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
+  useEffect(() => {
+    setIsSheetOpen(false);
+  }, []);
+
   return (
     <section className="pb-4 pt-2 sm:py-4">
       <div className="px-4 sm:px-6 container-none">
@@ -46,12 +50,12 @@ const Navbar = () => {
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuLink
-                      href="https://github.com/reserban/reserban.com"
+                      href="https://logofork.com"
                       className={navigationMenuTriggerStyle()}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Github
+                      Logofork
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
@@ -101,12 +105,12 @@ const Navbar = () => {
               <div className="flex flex-col">
                 <div className="flex flex-col gap-6 pt-5">
                   <a
-                    href="https://github.com/reserban/reserban.com"
+                    href="https://logofork.com"
                     className="font-medium"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Github
+                    Logofork
                   </a>
                   <a
                     href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"

@@ -45,8 +45,17 @@ const About = () => {
                   </h3>
                   <p className="text-black/50">
                     After working with a bunch of founders, I decided to dive
-                    into building products myself. That’s how I started creating
-                    my own tools to tackle problems, all under Unzet venture
+                    into building products myself. That&apos;s how I started
+                    creating{" "}
+                    <a
+                      href="https://logofork.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-black/60 relative after:content-[''] after:absolute after:left-0 after:bottom-[1px] after:h-[1px] after:bg-current after:transition-all after:duration-500 after:w-0 hover:after:w-full"
+                    >
+                      Logofork
+                    </a>{" "}
+                    and other tools to tackle problems, all under Unzet venture
                     studio.
                   </p>
                 </div>
