@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import Floating from "../components/pages/floating";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -71,7 +70,6 @@ export default function RootLayout({
         className={`${dmSans.variable} antialiased selection:bg-black selection:text-white`}
       >
         {children}
-        <Floating />
       </body>
     </html>
   );
