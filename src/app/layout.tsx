@@ -1,25 +1,32 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-sora",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Reserban",
+    default: "Reserban | Solving Startup Problems While Chewing Gum",
     template: "%s | Reserban",
   },
   description:
-    "I'm Serban, a visual & product designer with a real passion for technology and startups.",
+    "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
 
   metadataBase: new URL("https://www.reserban.com"),
-  keywords: ["keyword1", "keyword2", "keyword3"],
+  keywords: [
+    "startup consultant",
+    "product design",
+    "startup strategy",
+    "design and development",
+    "startup sidekick",
+    "startup problems",
+  ],
   authors: [{ name: "Reserban" }],
-  creator: "Reserban/Unzet",
-  publisher: "Reserban/Unzet",
+  creator: "Reserban",
+  publisher: "Reserban",
 
   robots: {
     index: true,
@@ -36,9 +43,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.reserban.com",
-    title: "Reserban",
+    title: "Reserban | Solving Startup Problems While Chewing Gum",
     description:
-      "I'm Serban, a visual & product designer with a real passion for technology and startups.",
+      "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
     siteName: "Reserban",
     images: [
       {
@@ -51,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reserban",
+    title: "Reserban | Solving Startup Problems While Chewing Gum",
     description:
-      "I'm Serban, a visual & product designer with a real passion for technology and startups.",
+      "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
     creator: "@reserban",
     images: ["https://www.reserban.com/og-image.jpg"],
   },
@@ -67,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} antialiased selection:bg-black selection:text-white`}
+        className={`${sora.variable} antialiased selection:bg-res-600 bg-white selection:text-white`}
       >
         {children}
       </body>
