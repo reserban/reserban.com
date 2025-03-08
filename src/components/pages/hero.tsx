@@ -52,7 +52,7 @@ const Hero = () => {
                   src="/reserban-photo.png"
                   alt="Reserban Photo"
                   fill
-                  className="block object-cover object-center transition-opacity duration-300 group-hover:opacity-0 md:group-hover:opacity-100 md:group-hover:opacity-0"
+                  className="block object-cover object-center transition-opacity duration-300 md:group-hover:opacity-0"
                   sizes="(max-width: 768px) 100vw, 362px"
                 />
                 <Image
