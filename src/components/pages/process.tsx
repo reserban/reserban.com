@@ -117,7 +117,7 @@ const Process = () => {
               />
             </div>
 
-            <div className="mx-4 px-4 py-3 mb-4 -mt-1 bg-res-50 rounded-xl">
+            <div className="mx-2 md:mx-4 px-4 py-3 mb-4 -mt-1 bg-res-50 rounded-xl">
               <p className="text-md font-medium text-black/50">
                 {integrations[cardNumber].description}
               </p>
