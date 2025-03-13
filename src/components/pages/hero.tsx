@@ -65,7 +65,7 @@ const Hero = () => {
               </AspectRatio>
               <div className="m-auto flex w-full items-center justify-center">
                 <div className="flex items-center gap-1 mt-3 rounded-md px-2">
-                  <p className="text-xs z-20 font-medium text-center text-black/40 sm:text-sm">
+                  <p className="text-sm z-20 font-medium text-center text-black/40 sm:text-sm">
                     &quot;Yea this is me, but vectorized&quot;
                   </p>
                 </div>
