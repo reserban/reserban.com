@@ -130,18 +130,13 @@ const Process = () => {
                   key={index}
                   className="m-0"
                 >
-                  <div
-                    className="overflow-hidden -mt-1 rounded-2xl relative w-full"
-                    style={{
-                      aspectRatio: isMobile ? "4/3" : "16/9",
-                      minHeight: isMobile ? "250px" : "auto",
-                    }}
-                  >
+                  <div className="overflow-hidden -mt-1 rounded-2xl relative w-full">
                     <Image
                       src={isMobile ? item.mobileImage : item.image}
                       alt={`${item.title} illustration`}
-                      fill
-                      className="object-cover rounded-xl md:rounded-2xl mt-1 transition-all duration-500"
+                      width={1200}
+                      height={675}
+                      className="object-contain w-full rounded-2xl transition-all duration-500"
                       sizes="(max-width: 768px) 100vw, 56rem"
                       priority={index === 0}
                     />

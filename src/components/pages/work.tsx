@@ -73,7 +73,7 @@ const Work = () => {
 
   return (
     <section id="work" aria-label="Work Showcase" className="relative z-0">
-      <div className="px-4 pb-6 sm:pb-12 sm:px-6 container-none">
+      <div className="px-4 pb-6 sm:pb-12 sm:px-24 container-none">
         <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-3">
           {displayColumns.map((column: Project[], columnIndex) => (
             <div key={columnIndex} className="flex flex-col gap-5 ">
