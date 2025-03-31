@@ -9,8 +9,8 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: "Reserban | Solving Startup Problems While Chewing Gum",
-    template: "%s | Reserban",
+    default: "reSerban | Solving Startup Problems While Chewing Gum",
+    template: "%s | reSerban",
   },
   description:
     "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     "startup sidekick",
     "startup problems",
   ],
-  authors: [{ name: "Reserban" }],
-  creator: "Reserban",
-  publisher: "Reserban",
+  authors: [{ name: "reSerban" }],
+  creator: "reSerban",
+  publisher: "reSerban",
 
   robots: {
     index: true,
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.reserban.com",
-    title: "Reserban | Solving Startup Problems While Chewing Gum",
+    title: "reSerban | Solving Startup Problems While Chewing Gum",
     description:
       "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
-    siteName: "Reserban",
+    siteName: "reSerban",
     images: [
       {
         url: "https://www.reserban.com/og-image.jpg",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reserban | Solving Startup Problems While Chewing Gum",
+    title: "reSerban | Solving Startup Problems While Chewing Gum",
     description:
       "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
     creator: "@reserban",

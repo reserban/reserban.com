@@ -1,6 +1,7 @@
 import { Linkedin } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const socialLinks = [
@@ -80,20 +81,37 @@ const Footer = () => {
             <h2 className="max-w-[48rem] text-4xl font-semibold leading-tight  lg:text-6xl">
               I know the struggle, I&apos;m a founder myself!
             </h2>
-            <Button
-              asChild
-              variant="secondary"
-              size="xl"
-              className="mt-8 rounded-full"
-            >
-              <a
-                href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0fM_19AnjyTezARAud4h0n96blUyRv5XPe2uUCDxuxU6wx-IVJVWB-aUDn2iYL1DaYfQmVIvPz"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="flex flex-col items-center gap-4 mt-8 relative">
+              <div className="absolute bottom-0 mb-52 md:mb-64 -rotate-12 md:mr-52 -mr-32 right-0 hover:scale-105 transition-all duration-500 w-20 h-20 md:w-24 md:h-24 transform translate-x-4 translate-y-4">
+                <Link
+                  href="https://rundevelop.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src="/rundevelop.png"
+                    alt="Rundevelop logo"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-contain"
+                  />
+                </Link>
+              </div>
+              <Button
+                asChild
+                variant="secondary"
+                size="xl"
+                className="rounded-full"
               >
-                Need a Helping Hand?
-              </a>
-            </Button>
+                <a
+                  href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0fM_19AnjyTezARAud4h0n96blUyRv5XPe2uUCDxuxU6wx-IVJVWB-aUDn2iYL1DaYfQmVIvPz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Collab?
+                </a>
+              </Button>
+            </div>
           </div>
 
           {/* Bottom Section */}

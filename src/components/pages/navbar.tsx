@@ -19,7 +19,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
 const Navbar = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
@@ -62,12 +61,23 @@ const Navbar = () => {
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <Link
-                      href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
+                      href="https://earlyraven.com"
                       className={`${navigationMenuTriggerStyle()} flex items-center`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Resume
+                      EarlyRaven
+                      <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link
+                      href="https://rundevelop.com"
+                      className={`${navigationMenuTriggerStyle()} flex items-center`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Run Develop
                       <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
                     </Link>
                   </NavigationMenuItem>

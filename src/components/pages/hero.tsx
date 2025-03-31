@@ -14,9 +14,9 @@ const Hero = () => {
               <span className="text-res-500"> Chewing Gum</span>
             </h1>
             <p className="text-xl ml-1 mb-2 font-medium leading-snug text-black/50">
-              I live and breathe startups and they don&apos;t happen by
-              accident. If you need a helping hand or someone to talk to,
-              I&apos;ve got you.
+              I help founders cut through the noise, stay focused, and move with
+              purpose: early-stage growth, product clarity, and founder
+              momentum.
             </p>
             <Button
               asChild
@@ -29,7 +29,7 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Coffee Call - Bring Your Own
+                Virtual Coffee Call?
               </a>
             </Button>
           </div>
