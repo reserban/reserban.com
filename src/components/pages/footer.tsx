@@ -82,7 +82,7 @@ const Footer = () => {
               I know the struggle, I&apos;m a founder myself!
             </h2>
             <div className="flex flex-col items-center gap-4 mt-8 relative">
-              <div className="absolute bottom-0 mb-52 md:mb-64 -rotate-12 md:mr-52 -mr-32 right-0 hover:scale-105 transition-all duration-500 w-20 h-20 md:w-24 md:h-24 transform translate-x-4 translate-y-4">
+              <div className="absolute bottom-0 mb-80 md:mb-64 -rotate-12 md:mr-52 mr-40 right-0 hover:scale-105 transition-all duration-500 w-20 h-20 md:w-24 md:h-24 transform translate-x-4 translate-y-4">
                 <Link
                   href="https://rundevelop.com"
                   target="_blank"
