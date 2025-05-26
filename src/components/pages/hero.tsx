@@ -18,20 +18,30 @@ const Hero = () => {
               purpose: early-stage growth, product clarity, and founder
               momentum.
             </p>
-            <Button
-              asChild
-              variant="default"
-              size="sm"
-              className="block h-fit w-fit rounded-full text-sm px-6 py-2 font-semibold leading-loose "
-            >
-              <a
-                href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0fM_19AnjyTezARAud4h0n96blUyRv5XPe2uUCDxuxU6wx-IVJVWB-aUDn2iYL1DaYfQmVIvPz"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="flex gap-3">
+              <Button
+                asChild
+                variant="default"
+                size="sm"
+                className="block h-fit w-fit rounded-full text-sm px-6 py-2 font-semibold leading-loose"
               >
-                Virtual Coffee Call?
-              </a>
-            </Button>
+                <a
+                  href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0fM_19AnjyTezARAud4h0n96blUyRv5XPe2uUCDxuxU6wx-IVJVWB-aUDn2iYL1DaYfQmVIvPz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Virtual Coffee Call?
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="block h-fit w-fit rounded-full text-sm px-6 py-2 font-semibold leading-loose border-res-500 text-res-500 hover:bg-res-50 hover:text-res-600"
+              >
+                <a href="/works">Works</a>
+              </Button>
+            </div>
           </div>
           <div className="justify-self-center lg:justify-self-end">
             <div className="relative flex aspect-[0.955145119_/_1] sm:-mr-36 lg:mr-0 mt-10 lg:mt-0 flex-col rounded-2xl border border-res-100 bg-white p-3 shadow-lg w-[90vw] sm:w-[22.625rem] rotate-[0.5deg] md:rotate-[0.8deg]">

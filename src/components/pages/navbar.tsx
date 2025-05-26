@@ -1,6 +1,6 @@
 "use client";
 
-import { MenuIcon, ExternalLink } from "lucide-react";
+import { MenuIcon, ExternalLink, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +10,8 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import {
@@ -21,9 +23,11 @@ import {
 } from "@/components/ui/sheet";
 const Navbar = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
   useEffect(() => {
     setIsSheetOpen(false);
+    setIsProjectsOpen(false);
   }, []);
 
   return (
@@ -31,7 +35,7 @@ const Navbar = () => {
       <div className="bg-res-500 text-white py-2">
         <div className="px-6 container-none mx-auto">
           <p className="text-sm text-center">
-            I&apos;m writing my university thesis in public. Be a part of it! 👆
+            I&apos;m writing my thesis in public. Be a part of it!
             <span className="hidden sm:inline"></span>
           </p>
         </div>
@@ -58,35 +62,67 @@ const Navbar = () => {
                 <NavigationMenu className="hidden mr-4 lg:block">
                   <NavigationMenuList>
                     <NavigationMenuItem>
+                      <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[200px] gap-3 p-4">
+                          <li>
+                            <a
+                              href="https://logofork.com"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <div className="flex items-center">
+                                Logofork
+                                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                              </div>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://earlyraven.com"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <div className="flex items-center">
+                                EarlyRaven
+                                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                              </div>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://rundevelop.com"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <div className="flex items-center">
+                                Run Develop
+                                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
                       <Link
-                        href="https://logofork.com"
-                        className={`${navigationMenuTriggerStyle()} flex items-center`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/works"
+                        className={navigationMenuTriggerStyle()}
                       >
-                        Logofork
-                        <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
+                        Works
                       </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                       <Link
-                        href="https://earlyraven.com"
+                        href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
                         className={`${navigationMenuTriggerStyle()} flex items-center`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        EarlyRaven
-                        <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
-                      </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <Link
-                        href="https://rundevelop.com"
-                        className={`${navigationMenuTriggerStyle()} flex items-center`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Run Develop
+                        Resume
                         <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
                       </Link>
                     </NavigationMenuItem>
@@ -104,29 +140,68 @@ const Navbar = () => {
                 <SheetHeader>
                   <SheetTitle>
                     <div className="flex items-center gap-4">
-                      <span className=" text-xl font-bold">re://</span>
+                      <span className="text-xl font-bold text-res-500">
+                        ://
+                      </span>
                     </div>
                   </SheetTitle>
                 </SheetHeader>
-                <div className="flex flex-col text-black/50">
+                <div className="flex flex-col text-black/80">
                   <div className="flex flex-col gap-6 pt-5">
-                    <a
-                      href="https://logofork.com"
-                      className="font-medium flex items-center"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Logofork
-                      <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
-                    </a>
+                    <div className="flex flex-col gap-2">
+                      <button
+                        onClick={() => setIsProjectsOpen(!isProjectsOpen)}
+                        className="flex items-center justify-between font-medium text-black/80 hover:text-black transition-colors"
+                      >
+                        Projects
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            isProjectsOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                      {isProjectsOpen && (
+                        <div className="flex flex-col gap-4 pl-4 mt-2">
+                          <a
+                            href="https://logofork.com"
+                            className="font-medium flex items-center text-black/80 hover:text-black transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Logofork
+                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                          </a>
+                          <a
+                            href="https://earlyraven.com"
+                            className="font-medium flex items-center text-black/80 hover:text-black transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            EarlyRaven
+                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                          </a>
+                          <a
+                            href="https://rundevelop.com"
+                            className="font-medium flex items-center text-black/80 hover:text-black transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Run Develop
+                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                    <Link href="/works" className="font-medium">
+                      Works
+                    </Link>
                     <a
                       href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
-                      className="font-medium flex items-center"
+                      className="font-medium flex items-center text-black/80 hover:text-black transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Resume
-                      <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
                     </a>
                   </div>
                 </div>
