@@ -9,20 +9,22 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: "reSerban | Solving Startup Problems While Chewing Gum",
+    default: "reSerban | Problem Solving While Chewing Pink Gum",
     template: "%s | reSerban",
   },
   description:
-    "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
+    "I help C-suites cut through the noise, stay focused, and move with purpose, while driving growth, product clarity, and momentum.",
 
   metadataBase: new URL("https://www.reserban.com"),
   keywords: [
-    "startup consultant",
-    "product design",
+    "C-suite consultant",
+    "executive problem solving",
     "startup strategy",
-    "design and development",
-    "startup sidekick",
-    "startup problems",
+    "product clarity",
+    "growth acceleration",
+    "executive focus",
+    "pink gum",
+    "startup momentum",
   ],
   authors: [{ name: "reSerban" }],
   creator: "reSerban",
@@ -43,9 +45,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.reserban.com",
-    title: "reSerban | Solving Startup Problems While Chewing Gum",
+    title: "reSerban | Problem Solving While Chewing Pink Gum",
     description:
-      "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
+      "I help C-suites cut through the noise, stay focused, and move with purpose, while driving growth, product clarity, and momentum.",
     siteName: "reSerban",
     images: [
       {
@@ -58,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "reSerban | Solving Startup Problems While Chewing Gum",
+    title: "reSerban | Problem Solving While Chewing Pink Gum",
     description:
-      "I live and breathe startups and they don't happen by accident. If you need a helping hand or someone to talk to, I've got you.",
+      "I help C-suites cut through the noise, stay focused, and move with purpose, while driving growth, product clarity, and momentum.",
     creator: "@reserban",
     images: ["https://www.reserban.com/og-image.jpg"],
   },
