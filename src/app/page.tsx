@@ -5,6 +5,7 @@ import Footer from "@/components/pages/footer";
 import Process from "@/components/pages/process";
 import Testimonial from "@/components/pages/testimonial";
 import Values from "@/components/pages/values";
+import StickyCat from "@/components/ui/sticky-cat";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Testimonial />
       <FAQ />
       <Footer />
+      <StickyCat />
     </section>
   );
 }

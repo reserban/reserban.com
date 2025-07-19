@@ -13,7 +13,7 @@ const integrations = [
     logo: <MapPin className="h-5 w-5" />,
     title: "Map",
     description:
-      "Figure out what makes your startup tick and where you're hitting walls. Spot the hidden opportunities that others miss and chart a path that feels right for you.",
+      "Figure out what makes your project tick and where you're hitting walls. Spot the hidden opportunities that others miss and chart a path that feels right for you.",
   },
   {
     image: "/step2.png",
@@ -29,7 +29,7 @@ const integrations = [
     logo: <Paintbrush className="h-5 w-5" />,
     title: "Shape",
     description:
-      "Help you craft your offering until it resonates deeply with the people who need it most. Polish your product, messaging, and user experience until they shine with purpose.",
+      "Help you craft your final version until it resonates deeply with the people who need it most. Polish your product, messaging, and user experience until they shine with purpose.",
   },
   {
     image: "/step4.png",
@@ -37,7 +37,7 @@ const integrations = [
     logo: <BarChart3 className="h-5 w-5" />,
     title: "Scale",
     description:
-      "I've been down this road before and can help you dodge the typical growth pains. Whether it's finding cash, building your crew, or keeping your sanity - I've got your back.",
+      "Let's design projects to handle exponential growth, plan for future markets, and build systems that can evolve with your vision and adapt them to tomorrow's challenges.",
   },
 ];
 
@@ -66,11 +66,11 @@ const Process = () => {
       <div className="container-none mx-auto max-w-[56rem] px-6 md:px-0">
         <div className="mb-6 max-w-lg md:mx-auto md:text-center">
           <h1 className="mb-2 md:text-4xl text-3xl text-res-500 font-bold">
-            My Process is a MESS!
+            My Process is MESS!
           </h1>
           <h3 className="text-lg text-black/50 font-medium">
-            I tackle startup challenges head-on, I&apos;m here to help you
-            navigate the messy parts.
+            I tackle challenges head-on and I&apos;m here to help you navigate
+            the messy parts.
           </h3>
         </div>
         <Tabs className="relative" defaultValue="0">

@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,45 +6,11 @@ import { Button } from "@/components/ui/button";
 
 const socialLinks = [
   {
-    icon: () => (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-      </svg>
-    ),
-    href: "https://x.com/reserban",
-  },
-  {
     icon: () => <Linkedin size={20} />,
     href: "https://www.linkedin.com/in/reserban/",
   },
   {
-    icon: () => (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </svg>
-    ),
+    icon: () => <Mail size={20} />,
     href: "mailto:alexreserban@gmail.com",
   },
 ];
@@ -58,15 +24,15 @@ const Footer = () => {
             <div className="relative flex justify-center">
               <Avatar className="absolute left-1/2 shadow-md -translate-x-[160%] p-0.5 bg-res-50 mb-4 h-16 w-16 origin-bottom scale-[80%] md:mb-5">
                 <AvatarImage src="/avatar1.png" alt="Avatar 1" />
-                <AvatarFallback>SU</AvatarFallback>
+                <AvatarFallback>Fd</AvatarFallback>
               </Avatar>
               <Avatar className="relative shadow-md mb-4 h-16 w-16 md:mb-5 p-0.5 bg-res-50">
                 <AvatarImage src="/avatar2.png" alt="Avatar 2" />
-                <AvatarFallback>SU</AvatarFallback>
+                <AvatarFallback>FD</AvatarFallback>
               </Avatar>
               <Avatar className="absolute left-1/2 shadow-md translate-x-[60%] p-0.5 bg-res-50 mb-4 h-16 w-16 origin-bottom scale-[80%] md:mb-5">
                 <AvatarImage src="/avatar3.png" alt="Avatar 3" />
-                <AvatarFallback>SU</AvatarFallback>
+                <AvatarFallback>FD</AvatarFallback>
               </Avatar>
               <div className="absolute right-7 top-10 translate-x-[120%] w-10 h-10 z-10">
                 <Image
@@ -78,11 +44,11 @@ const Footer = () => {
                 />
               </div>
             </div>
-            <h2 className="max-w-[48rem] text-4xl font-semibold leading-tight  lg:text-6xl">
-              I know the struggle, I&apos;m a founder myself!
+            <h2 className="max-w-[48rem] text-4xl mt-4 md:mt-2 font-semibold lg:text-6xl">
+              I know the struggle, I&apos;m also a builder!
             </h2>
             <div className="flex flex-col items-center gap-4 mt-8 relative">
-              <div className="absolute bottom-0 mb-80 md:mb-64 -rotate-12 md:mr-52 mr-40 right-0 hover:scale-105 transition-all duration-500 w-20 h-20 md:w-24 md:h-24 transform translate-x-4 translate-y-4">
+              <div className="absolute bottom-0 mb-72 md:mb-64 -rotate-12 md:mr-64 mr-40 right-0 hover:scale-105 transition-all duration-500 w-20 h-20 md:w-24 md:h-24 transform translate-x-4 translate-y-4">
                 <Link
                   href="https://rundevelop.com"
                   target="_blank"
@@ -101,14 +67,14 @@ const Footer = () => {
                 asChild
                 variant="secondary"
                 size="xl"
-                className="rounded-full"
+                className="rounded-full -mt-1"
               >
                 <a
                   href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0fM_19AnjyTezARAud4h0n96blUyRv5XPe2uUCDxuxU6wx-IVJVWB-aUDn2iYL1DaYfQmVIvPz"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Collab?
+                  Need a Sidekick?
                 </a>
               </Button>
             </div>

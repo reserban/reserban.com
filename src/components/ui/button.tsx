@@ -10,13 +10,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-res-500 font-semibold text-zinc-50 hover:bg-black dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90",
+          "bg-res-500 font-semibold text-zinc-50 duration-500 hover:bg-black dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90",
         destructive:
           "bg-red-500 text-zinc-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
         outline:
-          "border font-semibold border-res-500 duration-500 transition-all bg-white hover:bg-res-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
+          "border font-semibold border-res-500 hover:bg-res-500 hover:text-black text-res-500 duration-500 transition-all bg-white hover:bg-res-500 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
         secondary:
-          "bg-res-50 text-res-500 hover:bg-black dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
+          "bg-res-50 duration-500 text-res-500 hover:bg-black hover:text-white dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
         ghost:
           "hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
         link: "text-zinc-900 underline-offset-4 hover:underline dark:text-zinc-50",

@@ -5,15 +5,15 @@ import Link from "next/link";
 
 const integrations = [
   {
-    title: "Startup Sidekick",
+    title: "C-suite Sidekick",
     description:
-      "Whether it's design, strategy, research or just figuring stuff out, I've got your back trough the startup wild ride and founder mode.",
+      "Whether it's strategy, automation, research or just figuring out, I've got your back trough the business wild ride and help bring focus.",
     buttonTitle: "Learn More",
   },
   {
-    title: "Bridging Dev & Design",
+    title: "Bridging Product",
     description:
-      "I translate stuff between devs and designers, smoothing out the process so ideas come to life as functional, beautiful products.",
+      "I translate stuff between management, devs and designers, smoothing out the process so ideas come to life faster and better.",
     buttonTitle: "Get Started",
   },
 ];
@@ -27,7 +27,7 @@ const Values = () => {
             key={index}
             className={`relative flex ${
               index === 0 ? "lg:justify-center" : "lg:justify-start"
-            } items-center justify-start py-5 md:py-10 px-2 pr-8 md:pr-0`}
+            } items-center justify-start py-3 md:py-10 px-2 pr-8 md:pr-0`}
           >
             <div className="flex max-w-sm flex-col items-start justify-center gap-5 md:gap-10">
               <div className="flex flex-col gap-3">
@@ -41,15 +41,15 @@ const Values = () => {
             </div>
           </div>
         ))}
-        <div className="absolute bottom-0 right-0 w-20 h-20 -mb-4 md:mb-0 md:-mr-10 md:w-24 md:h-24 rotate-12 transform translate-x-4 translate-y-4 hover:scale-105 transition-all duration-500">
+        <div className="absolute -bottom-3 md:-bottom-6 right-0 md:right-6 w-20 h-20 -mb-2 md:mb-0 md:-mr-10 md:w-24 md:h-24 rotate-12 transform translate-x-4 translate-y-4 hover:scale-105 transition-all duration-500">
           <Link
-            href="https://earlyraven.com"
+            href="https://logofork.com"
             target="_blank"
             rel="noopener noreferrer"
             className="block"
           >
             <Image
-              src="/earlyraven.png"
+              src="/logofork.png"
               alt="Early Raven Sticker"
               width={96}
               height={96}

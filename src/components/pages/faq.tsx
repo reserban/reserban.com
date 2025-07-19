@@ -24,28 +24,28 @@ const faqItems: FAQItem[] = [
   // Features Questions
   {
     category: "Features",
-    question: "What exactly is a 'Startup Sidekick'?",
+    question: "What exactly is a 'C-suite Sidekick'?",
     answer:
-      "Think of me as your startup's best friend who actually knows what they're doing. I provide hands-on help with design, strategy, research, and general problem-solving to navigate the wild startup journey with you.",
+      "Think of me as your business's best friend who actually knows what they're doing. I provide hands-on help with strategy, automation, research, and daily problem-solving.",
   },
   {
     category: "Features",
-    question: "How do you bridge development and design?",
+    question: "How do you bridge product?",
     answer:
-      "I speak both languages fluently - developer and designer. I translate requirements, expectations, and constraints between teams to ensure your ideas become functional, beautiful products without the usual communication breakdowns.",
+      "I translate requirements, expectations, and constraints between teams to ensure your ideas become functional, beautiful projects without the usual communication breakdowns.",
   },
   {
     category: "Features",
     question: "What does your MESS process involve?",
     answer:
-      "MESS stands for Map, Execute, Shape, and Scale. I map out your challenges, execute on solutions, shape your offering until it resonates with your audience, and scale what works. It's a structured approach to tackling the inherently messy startup journey.",
+      "MESS stands for Map, Execute, Shape, and Scale. I map out your challenges, execute on solutions, shape your projects, and design them to scale. It's a structured approach to tackling the messy business journey.",
   },
   // Other Questions
   {
     category: "Other",
     question: "Can I just book a coffee call to chat?",
     answer:
-      "Absolutely! The 'Coffee Call - Bring Your Own' option is perfect for this. It's a no-pressure way to discuss your challenges, get some quick advice, or just connect with someone who understands the startup ecosystem.",
+      "Absolutely!  It's a no-pressure way to discuss your challenges, get some quick advice, or just connect with someone who thinks in solutions.",
   },
 ];
 
@@ -154,7 +154,7 @@ const FAQ = () => {
               asChild
               variant="outline"
               size="sm"
-              className="block h-fit w-fit rounded-full text-sm px-6 py-2 font-semibold leading-loose border-res-500 text-res-500 hover:bg-res-50 hover:text-res-600"
+              className="block h-fit w-fit rounded-full text-sm px-6 py-2 font-semibold leading-loose"
             >
               <a
                 href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0fM_19AnjyTezARAud4h0n96blUyRv5XPe2uUCDxuxU6wx-IVJVWB-aUDn2iYL1DaYfQmVIvPz"

@@ -32,10 +32,10 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-res-500 text-white py-2">
+      <div className="bg-res-500 text-white py-3">
         <div className="px-6 container-none mx-auto">
-          <p className="text-sm text-center">
-            I&apos;m writing my thesis in public. Be a part of it!
+          <p className="text-sm font-medium text-center">
+            Sidekick at <b>The Conqueror</b> & Building <b>Sitcom</b>
             <span className="hidden sm:inline"></span>
           </p>
         </div>
@@ -80,19 +80,6 @@ const Navbar = () => {
                           </li>
                           <li>
                             <a
-                              href="https://earlyraven.com"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <div className="flex items-center">
-                                EarlyRaven
-                                <ExternalLink className="w-3.5 h-3.5 ml-1" />
-                              </div>
-                            </a>
-                          </li>
-                          <li>
-                            <a
                               href="https://rundevelop.com"
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                               target="_blank"
@@ -113,17 +100,6 @@ const Navbar = () => {
                         className={navigationMenuTriggerStyle()}
                       >
                         Works
-                      </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <Link
-                        href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
-                        className={`${navigationMenuTriggerStyle()} flex items-center`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Resume
-                        <ExternalLink className="w-3.5 h-3.5 ml-1 hidden hover:inline-block" />
                       </Link>
                     </NavigationMenuItem>
                   </NavigationMenuList>
@@ -172,15 +148,6 @@ const Navbar = () => {
                             <ExternalLink className="w-3.5 h-3.5 ml-1" />
                           </a>
                           <a
-                            href="https://earlyraven.com"
-                            className="font-medium flex items-center text-black/80 hover:text-black transition-colors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            EarlyRaven
-                            <ExternalLink className="w-3.5 h-3.5 ml-1" />
-                          </a>
-                          <a
                             href="https://rundevelop.com"
                             className="font-medium flex items-center text-black/80 hover:text-black transition-colors"
                             target="_blank"
@@ -195,14 +162,6 @@ const Navbar = () => {
                     <Link href="/works" className="font-medium">
                       Works
                     </Link>
-                    <a
-                      href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
-                      className="font-medium flex items-center text-black/80 hover:text-black transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Resume
-                    </a>
                   </div>
                 </div>
               </SheetContent>
