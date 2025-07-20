@@ -1,9 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const [isPhotoMasked, setIsPhotoMasked] = useState(false);
+
+  const handlePhotoPress = () => {
+    setIsPhotoMasked(!isPhotoMasked);
+  };
+
   return (
     <section className="relative overflow-hidden pt-8 sm:pt-12 lg:pt-6 pb-12 px-6 md:px-0 font-sans">
       <div className="container-none mx-auto max-w-[56rem] relative justify-center">
@@ -43,7 +52,10 @@ const Hero = () => {
             </div>
           </div>
           <div className="justify-self-center lg:justify-self-end">
-            <div className="relative flex aspect-[0.955145119_/_1] sm:-mr-36 lg:mr-0 mt-10 lg:mt-0 flex-col rounded-2xl border border-res-100 bg-white p-3 shadow-lg w-[90vw] sm:w-[22.625rem] rotate-[0.5deg] md:rotate-[0.8deg] group">
+            <div
+              className="relative flex aspect-[0.955145119_/_1] sm:-mr-36 lg:mr-0 mt-10 lg:mt-0 flex-col rounded-2xl border border-res-100 bg-white p-3 shadow-lg w-[90vw] sm:w-[22.625rem] rotate-[0.5deg] md:rotate-[0.8deg] group cursor-pointer md:cursor-default"
+              onClick={handlePhotoPress}
+            >
               <div className="absolute -top-7 right-4 w-18 h-18 z-10">
                 <Image
                   src="/hand.svg"
@@ -61,23 +73,37 @@ const Hero = () => {
                   src="/reserban-photo.png"
                   alt="Reserban Photo"
                   fill
-                  className="block object-cover object-center transition-opacity duration-300 md:group-hover:opacity-0"
+                  className={`block object-cover object-center transition-opacity duration-300 ${
+                    isPhotoMasked ? "opacity-0" : "md:group-hover:opacity-0"
+                  }`}
                   sizes="(max-width: 768px) 100vw, 362px"
                 />
                 <Image
                   src="/reserban-photo-mask.png"
                   alt="Reserban Photo with Balaclava"
                   fill
-                  className="hidden object-cover object-center opacity-0 transition-opacity duration-300 md:block md:group-hover:opacity-100"
+                  className={`object-cover object-center transition-opacity duration-300 ${
+                    isPhotoMasked
+                      ? "opacity-100"
+                      : "opacity-0 md:group-hover:opacity-100"
+                  }`}
                   sizes="(max-width: 768px) 100vw, 362px"
                 />
               </AspectRatio>
               <div className="m-auto flex w-full items-center justify-center">
                 <div className="flex items-center gap-1 mt-3 rounded-md px-2">
-                  <p className="text-sm z-20 font-medium text-center text-black/40 sm:text-sm group-hover:hidden">
+                  <p
+                    className={`text-sm z-20 font-medium text-center text-black/40 sm:text-sm ${
+                      isPhotoMasked ? "hidden" : "group-hover:hidden"
+                    }`}
+                  >
                     &quot;Yea this is me, but vectorized&quot;
                   </p>
-                  <p className="text-sm z-20 font-medium text-center text-black/40 sm:text-sm hidden group-hover:block">
+                  <p
+                    className={`text-sm z-20 font-medium text-center text-black/40 sm:text-sm ${
+                      isPhotoMasked ? "block" : "hidden group-hover:block"
+                    }`}
+                  >
                     &quot;Yea this is me vectorized & with a mask&quot;
                   </p>
                 </div>
