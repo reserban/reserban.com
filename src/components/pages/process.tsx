@@ -1,10 +1,10 @@
 "use client";
 
 import { MapPin, Hammer, Paintbrush, BarChart3 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const integrations = [
   {
@@ -43,23 +43,6 @@ const integrations = [
 
 const Process = () => {
   const [cardNumber, setCardNumber] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Check if we're on mobile when component mounts and when window resizes
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    // Check initially
-    checkIfMobile();
-
-    // Add event listener for window resize
-    window.addEventListener("resize", checkIfMobile);
-
-    // Clean up
-    return () => window.removeEventListener("resize", checkIfMobile);
-  }, []);
 
   return (
     <section className="pt-12 pb-20">
@@ -124,25 +107,35 @@ const Process = () => {
             </div>
 
             <div className="p-1 pb-5 md:pb-4">
-              {integrations.map((item, index) => (
-                <TabsContent
-                  value={index.toString()}
-                  key={index}
-                  className="m-0"
-                >
-                  <div className="overflow-hidden -mt-1 rounded-2xl relative w-full">
+              <div className="overflow-hidden -mt-1 rounded-2xl relative w-full">
+                {integrations.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`${index === cardNumber ? "block" : "hidden"}`}
+                  >
+                    {/* Mobile image - hidden on desktop */}
                     <Image
-                      src={isMobile ? item.mobileImage : item.image}
+                      src={item.mobileImage}
                       alt={`${item.title} illustration`}
                       width={1200}
                       height={675}
-                      className="object-contain w-full rounded-2xl transition-all duration-500"
-                      sizes="(max-width: 768px) 100vw, 56rem"
+                      className="object-contain w-full rounded-2xl transition-all duration-500 md:hidden"
+                      sizes="100vw"
+                      priority={index === 0}
+                    />
+                    {/* Desktop image - hidden on mobile */}
+                    <Image
+                      src={item.image}
+                      alt={`${item.title} illustration`}
+                      width={1200}
+                      height={675}
+                      className="object-contain w-full rounded-2xl transition-all duration-500 hidden md:block"
+                      sizes="56rem"
                       priority={index === 0}
                     />
                   </div>
-                </TabsContent>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </Tabs>

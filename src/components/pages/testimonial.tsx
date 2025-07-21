@@ -4,7 +4,7 @@ const Testimonial = () => {
   return (
     <div className="relative">
       <div className="absolute -top-12 right-0 hover:scale-105 lg:mr-60 lg:mt-24 mt-60 mr-4 rotate-12 transition-all duration-500 w-20 h-20 md:w-28 md:h-28 z-10"></div>
-      <section className="bg-res-500 md:rounded-full px-8 py-12 sm:py-16 lg:py-24 mb-12 md:mb-20 md:mt-12 md:mx-60">
+      <section className="bg-res-500 md:rounded-full px-8 py-16 sm:py-16 lg:py-16 mb-12 md:mb-20 md:mt-12 md:mx-60">
         <div className="container-none mx-auto max-w-[56rem]">
           <div className="flex flex-col items-center text-center px-4 sm:px-6">
             <div className="mb-4 flex items-center rounded-full bg-white px-3 py-2 shadow-md">

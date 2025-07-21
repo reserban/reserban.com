@@ -14,7 +14,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative overflow-hidden pt-8 sm:pt-12 lg:pt-6 pb-12 px-6 md:px-0 font-sans">
+    <section className="relative overflow-hidden pt-8 sm:pt-12 lg:pt-4 pb-12 px-6 md:px-0 font-sans">
       <div className="container-none mx-auto max-w-[56rem] relative justify-center">
         <div className="grid grid-cols-1 items-center lg:grid-cols-2">
           <div className="flex flex-col gap-4 -mt-6 sm:mx-auto sm:max-w-[32rem] md:max-w-[40rem] lg:mx-0 lg:max-w-none">
@@ -26,7 +26,7 @@ const Hero = () => {
               I help C-suites cut through the noise, stay focused, and move with
               purpose, while driving growth, product clarity, and momentum.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <Button
                 asChild
                 variant="default"
@@ -94,14 +94,14 @@ const Hero = () => {
                 <div className="flex items-center gap-1 mt-3 rounded-md px-2">
                   <p
                     className={`text-sm z-20 font-medium text-center text-black/40 sm:text-sm ${
-                      isPhotoMasked ? "hidden" : "group-hover:hidden"
+                      isPhotoMasked ? "hidden" : "block md:group-hover:hidden"
                     }`}
                   >
                     &quot;Yea this is me, but vectorized&quot;
                   </p>
                   <p
                     className={`text-sm z-20 font-medium text-center text-black/40 sm:text-sm ${
-                      isPhotoMasked ? "block" : "hidden group-hover:block"
+                      isPhotoMasked ? "block" : "hidden md:group-hover:block"
                     }`}
                   >
                     &quot;Yea this is me vectorized & with a mask&quot;

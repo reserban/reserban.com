@@ -35,12 +35,25 @@ const Navbar = () => {
       <div className="bg-res-500 text-white py-3">
         <div className="px-6 container-none mx-auto">
           <p className="text-sm font-medium text-center">
-            Sidekick at <b>The Conqueror</b> & Building <b>Sitcom</b>
+            Sidekick at{" "}
+            <a
+              className="hover:text-res-200 transition-all duration-300"
+              href="https://theconqueror.com"
+            >
+              <b>The Conqueror</b>
+            </a>{" "}
+            & Building{" "}
+            <a
+              className="hover:text-res-200 transition-all duration-300"
+              href="https://rundevelop.com/apply"
+            >
+              <b>Sitcom</b>
+            </a>
             <span className="hidden sm:inline"></span>
           </p>
         </div>
       </div>
-      <section className="pb-4 pt-2 sm:py-4">
+      <section className="mb-4 mt-3 md:mt-2 sm:py-4">
         <div className="px-6 container-none  mx-auto">
           <nav className="flex items-center justify-between">
             <div className="flex justify-between flex-grow">
@@ -108,15 +121,19 @@ const Navbar = () => {
             </div>
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="link" className="p-1">
-                  <MenuIcon className="w-4 h-4 text-black" />
+                <Button
+                  variant="ghost"
+                  className="p-2 hover:bg-gray-100 rounded-md transition-colors"
+                  onClick={() => console.log("Hamburger menu clicked")}
+                >
+                  <MenuIcon className="w-6 h-6 text-black" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="top" className="max-h-screen overflow-scroll">
                 <SheetHeader>
                   <SheetTitle>
                     <div className="flex items-center gap-4">
-                      <span className="text-xl font-bold text-res-500">
+                      <span className="text-2xl font-semibold text-res-500">
                         ://
                       </span>
                     </div>
