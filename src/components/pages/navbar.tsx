@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="bg-res-500 text-white py-3">
         <div className="px-6 container-none mx-auto">
           <p className="text-sm font-medium text-center">
-            Sidekick at{" "}
+            Sidekick & Head of Martech at{" "}
             <a
               className="hover:text-res-200 transition-all duration-300"
               href="https://theconqueror.com"
@@ -45,9 +45,9 @@ const Navbar = () => {
             & Building{" "}
             <a
               className="hover:text-res-200 transition-all duration-300"
-              href="https://rundevelop.com/apply"
+              href="https://pinkfuss.com"
             >
-              <b>Sitcom</b>
+              <b>Pinkfuss HQ</b>
             </a>
             <span className="hidden sm:inline"></span>
           </p>
