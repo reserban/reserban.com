@@ -65,17 +65,84 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
     if (!post) {
       return {
-        title: 'Post Not Found - Serban Alex',
+        title: 'Post Not Found - Serban Alex Blog',
+        description: 'The requested blog post could not be found. Explore more insights on strategic support, product translation, and embracing chaos.',
+        openGraph: {
+          title: 'Post Not Found - Serban Alex Blog',
+          description: 'The requested blog post could not be found. Explore more insights on strategic support, product translation, and embracing chaos.',
+          type: 'article',
+          url: `https://reserban.com/blog/${params.slug}`,
+        },
       };
     }
 
+    const cleanExcerpt = post.excerpt?.replace(/<[^>]*>/g, '').substring(0, 160) || 'Insights on strategic support, product translation, and embracing chaos from Serban Alex.';
+    
     return {
-      title: `${post.title} - Serban Alex`,
-      description: post.excerpt,
+      title: `${post.title} - Serban Alex Blog`,
+      description: cleanExcerpt,
+      keywords: ["Medium", "blog", "strategic support", "leadership", "product translation", "automation", "research", "growth", "complexity", "chaos", "management"],
+      authors: [{ name: "Serban Alex", url: "https://reserban.com" }],
+      creator: "Serban Alex",
+      publisher: "Serban Alex",
+      openGraph: {
+        title: post.title,
+        description: cleanExcerpt,
+        type: 'article',
+        url: `https://reserban.com/blog/${params.slug}`,
+        siteName: 'Serban Alex Blog',
+        publishedTime: post.date,
+        authors: ['Serban Alex'],
+        section: 'Strategic Insights',
+        tags: ['Medium', 'Strategic Support', 'Product Translation', 'Leadership', 'Automation'],
+        images: [
+          {
+            url: '/profile-reserban.png',
+            width: 1200,
+            height: 630,
+            alt: `${post.title} - Serban Alex Blog`,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: cleanExcerpt,
+        images: ['/profile-reserban.png'],
+        creator: '@reserban',
+      },
+      alternates: {
+        canonical: `https://reserban.com/blog/${params.slug}`,
+        types: {
+          'application/rss+xml': [
+            {
+              url: 'https://reserban.com/api/medium-rss',
+              title: 'Serban Alex Blog RSS Feed',
+            },
+          ],
+        },
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      },
     };
   } catch {
     return {
       title: 'Blog Post - Serban Alex',
+      description: 'Insights on strategic support, product translation, and embracing chaos from Medium.',
+      openGraph: {
+        title: 'Blog Post - Serban Alex',
+        description: 'Insights on strategic support, product translation, and embracing chaos from Medium.',
+        type: 'article',
+      },
     };
   }
 }
@@ -112,7 +179,48 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     });
 
     return (
-      <div className="min-h-screen py-8 md:py-12 bg-background">
+      <div className="min-h-screen py-6 md:py-12 bg-background">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": post.title,
+              "description": post.excerpt?.replace(/<[^>]*>/g, '').substring(0, 160) || 'Insights on strategic support and product translation',
+              "image": "https://reserban.com/profile-reserban.png",
+              "author": {
+                "@type": "Person",
+                "name": "Serban Alex",
+                "url": "https://reserban.com"
+              },
+              "publisher": {
+                "@type": "Person",
+                "name": "Serban Alex",
+                "url": "https://reserban.com"
+              },
+              "datePublished": post.date,
+              "dateModified": post.date,
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `https://reserban.com/blog/${params.slug}`
+              },
+              "url": `https://reserban.com/blog/${params.slug}`,
+              "isPartOf": {
+                "@type": "Blog",
+                "name": "Serban Alex Blog",
+                "url": "https://reserban.com"
+              },
+              "about": [
+                "Strategic Support",
+                "Product Translation",
+                "Leadership",
+                "Medium"
+              ],
+              "keywords": "Medium, strategic support, leadership, product translation, automation, research, growth, complexity, chaos, management"
+            })
+          }}
+        />
         <div className="container">
           <div className="mx-auto max-w-3xl">
             {/* Navigation header */}
@@ -163,10 +271,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {cleanContent ? (
                 <div 
                   dangerouslySetInnerHTML={{ __html: cleanContent }}
-                  className="[&>p]:mb-4 [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:mb-4 [&>h1]:mt-8 [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:mb-3 [&>h2]:mt-6 [&>h3]:text-lg [&>h3]:font-medium [&>h3]:mb-2 [&>h3]:mt-4 [&>ul]:mb-4 [&>ol]:mb-4 [&>blockquote]:border-l-4 [&>blockquote]:border-accent [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:mb-4 [&>pre]:bg-muted [&>pre]:p-4 [&>pre]:rounded-md [&>pre]:mb-4 [&>pre]:overflow-x-auto [&>code]:bg-muted [&>code]:px-1 [&>code]:py-0.5 [&>code]:rounded [&>img]:rounded-md [&>img]:my-6 [&>img]:mx-auto [&>img]:block [&>img]:w-full [&>img]:max-w-full [&>img]:h-auto [&>img]:object-contain [&>figure]:my-6 [&>figure>img]:rounded-md [&>figure>img]:mx-auto [&>figure>img]:block [&>figure>img]:w-full [&>figure>img]:max-w-full [&>figure>img]:h-auto [&>figure>img]:object-contain [&>iframe]:w-full [&>iframe]:max-w-full [&>iframe]:rounded-md [&>iframe]:my-6 [&>video]:w-full [&>video]:max-w-full [&>video]:h-auto [&>video]:rounded-md [&>video]:my-6 [&>embed]:w-full [&>embed]:max-w-full [&>embed]:rounded-md [&>embed]:my-6 [&>object]:w-full [&>object]:max-w-full [&>object]:rounded-md [&>object]:my-6"
+                  className="[&>p]:mb-4 [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:mb-4 [&>h1]:mt-8 [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:mb-3 [&>h2]:mt-6 [&>h3]:text-lg [&>h3]:font-medium [&>h3]:mb-2 [&>h3]:mt-4 [&>ul]:mb-4 [&>ol]:mb-4 [&>blockquote]:border-l-4 [&>blockquote]:border-accent [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:mb-4 [&>pre]:bg-muted [&>pre]:p-4 [&>pre]:mb-4 [&>pre]:overflow-x-auto [&>code]:bg-muted [&>code]:px-1 [&>code]:py-0.5 [&>img]:my-6 [&>img]:mx-auto [&>img]:block [&>img]:w-full [&>img]:max-w-full [&>img]:h-auto [&>img]:object-contain [&>figure]:my-6 [&>figure>img]:mx-auto [&>figure>img]:block [&>figure>img]:w-full [&>figure>img]:max-w-full [&>figure>img]:h-auto [&>figure>img]:object-contain [&>iframe]:w-full [&>iframe]:max-w-full [&>iframe]:my-6 [&>video]:w-full [&>video]:max-w-full [&>video]:h-auto [&>video]:my-6 [&>embed]:w-full [&>embed]:max-w-full [&>embed]:my-6 [&>object]:w-full [&>object]:max-w-full [&>object]:my-6"
                 />
               ) : (
-                <div className="text-center py-12 border border-border rounded-md bg-muted/20">
+                <div className="text-center py-12 border border-border bg-muted/20">
                   <p className="text-muted-foreground mb-4">
                     Content not available in RSS feed.
                   </p>
@@ -174,7 +282,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     href={post.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground hover:bg-accent/90 transition-colors"
                   >
                     <ExternalLink className="size-4" />
                     Read Full Article on Medium

@@ -1,16 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { Calendar, Clock, RefreshCw, ArrowUpRight } from "lucide-react";
+import { Calendar, Clock, ArrowUpRight } from "lucide-react";
 import { fetchMediumPosts, type MediumPost } from "@/lib/medium-rss";
 
-export const BlogSection = () => {
+interface BlogSectionProps {
+  onRefreshChange?: (refreshFn: () => void, isLoading: boolean) => void;
+}
+
+export const BlogSection = ({ onRefreshChange }: BlogSectionProps) => {
   const [blogPosts, setBlogPosts] = useState<MediumPost[]>([]);
   const [isLoadingPosts, setIsLoadingPosts] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadPosts = async (forceRefresh = false) => {
+  const loadPosts = useCallback(async (forceRefresh = false) => {
     setIsLoadingPosts(true);
     setError(null);
     try {
@@ -24,11 +28,21 @@ export const BlogSection = () => {
     } finally {
       setIsLoadingPosts(false);
     }
-  };
+  }, []);
+
+  const refreshPosts = useCallback(() => {
+    loadPosts(true);
+  }, [loadPosts]);
 
   useEffect(() => {
     loadPosts();
-  }, []);
+  }, [loadPosts]);
+
+  useEffect(() => {
+    if (onRefreshChange) {
+      onRefreshChange(refreshPosts, isLoadingPosts);
+    }
+  }, [onRefreshChange, refreshPosts, isLoadingPosts]);
 
   // Create URL-friendly slug from title
   const createSlug = (title: string, guid: string) => {
@@ -44,21 +58,10 @@ export const BlogSection = () => {
 
   return (
     <section>
-      <div className="flex items-center justify-between mb-6 md:mb-8">
-        <h2 className="text-xl font-semibold">Post It</h2>
-        <button
-          onClick={() => loadPosts(true)}
-          disabled={isLoadingPosts}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm border border-border rounded-sm transition-colors disabled:opacity-50"
-        >
-          <RefreshCw className={`size-4 ${isLoadingPosts ? 'animate-spin' : ''}`} />
-          Refresh
-        </button>
-      </div>
       {isLoadingPosts ? (
         <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="rounded-sm border border-border bg-card p-4 md:p-6">
+            <div key={i} className="border border-border bg-card p-4 md:p-6">
               <div className="mb-3 h-6 bg-muted animate-pulse rounded"></div>
               <div className="mb-4 space-y-2">
                 <div className="h-4 bg-muted animate-pulse rounded"></div>
@@ -76,14 +79,14 @@ export const BlogSection = () => {
           {blogPosts.map((post) => (
             <article
               key={post.id}
-              className="group rounded-sm border border-border bg-card p-4 md:p-6 transition-all hover:shadow-lg hover:shadow-accent/5 hover:border-accent"
+              className="group border border-border bg-card p-4 md:p-6 transition-all duration-500 hover:shadow-lg hover:shadow-accent/5 hover:border-accent"
             > 
               <Link href={`/blog/${createSlug(post.title, post.guid)}`} className="flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4 flex-1">
                   <h3 className="text-xl font-semibold group-hover:text-accent transition-colors flex-1">
                     {post.title}
                   </h3>
-                  <ArrowUpRight className="size-5 text-muted-foreground group-hover:text-accent transition-colors ml-2 flex-shrink-0" />
+                  <ArrowUpRight className="size-5 text-accent group-hover:text-accent transition-colors ml-2 flex-shrink-0" />
                 </div>
                 
                 <div className="flex items-center gap-4 text-xs text-muted-foreground mt-auto">
@@ -108,7 +111,7 @@ export const BlogSection = () => {
                 Error loading posts: {error}
               </p>
               <button
-                onClick={() => loadPosts(true)}
+                onClick={refreshPosts}
                 className="px-4 py-2 text-sm border border-border rounded-md hover:bg-accent/10 transition-colors"
               >
                 Try Again
@@ -116,9 +119,6 @@ export const BlogSection = () => {
             </>
           ) : (
             <div className="space-y-2">
-              <p className="text-muted-foreground">
-                No blog posts available at the moment.
-              </p>
             </div>
           )}
         </div>

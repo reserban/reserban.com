@@ -75,14 +75,14 @@ export const BrevoForm = () => {
             method="POST" 
             action="https://47dd79c0.sibforms.com/serve/MUIFAEK6UwwTanu2EBA4-VUrOVHMBz6SjmNwfkrSqoslRXgIeGWX6fBi_eJQsvK0R48cOixORfP_1f5OqtYY1DTAzcoHIx0g6tREzfArXxFxnL_DtdBDGfuJpkq-qnQ_AoHSALd6m8icGnuIrM1lsqsAnYr5g3B81gbk9leQs-SwrEyh_kcTe-LrsdSYvyvSrQfU8rzixyAh57lw" 
             data-type="subscription"
-            className="flex ml-1.5 flex-col items-center w-full sm:flex-row sm:justify-center gap-3 sm:gap-0"
+            className="flex -mb-7 md:-mb-4 ml-1.5 flex-col items-center w-full sm:flex-row sm:justify-center gap-3 sm:gap-0"
           >
             <div className="sib-input sib-form-block w-full sm:max-w-xs">
               <div className="form__entry entry_block">
                 <div className="form__label-row">
                   <div className="entry__field">
                     <input 
-                      className="input flex h-10 w-full rounded-xs border-0 bg-card text-foreground px-3 py-2 text-md ring-1 ring-white/50 ring-offset-background placeholder:text-muted-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" 
+                        className="input flex text-center h-10 w-full text-sm border border-border bg-card text-foreground px-3 py-2 text-md placeholder:text-muted-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-500 hover:shadow-lg hover:shadow-accent/5 hover:border-accent"
                       type="email" 
                       id="EMAIL" 
                       name="EMAIL" 
@@ -97,7 +97,7 @@ export const BrevoForm = () => {
             </div>
             
             <button 
-              className="sm:-ml-3 inline-flex items-center justify-center gap-2 rounded-xs text-sm font-medium ring-offset-background transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none !bg-accent !text-black hover:!bg-transparent hover:!text-accent hover:!border hover:!border-accent h-10  py-2 w-65 md:w-28 mt-1 md:mt-0 -ml-4 md:-ml-4.5" 
+              className="sm:-ml-3 inline-flex items-center justify-center gap-2 text-sm font-medium border border-border bg-card text-accent transition-all duration-500 hover:shadow-lg hover:shadow-accent/5 hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none h-10 py-2 w-65 md:w-28 mt-1 md:mt-0 -ml-4 md:-ml-4.5"
               form="sib-form" 
               type="submit"
             >

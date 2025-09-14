@@ -2,7 +2,24 @@ import { NextResponse } from 'next/server';
 import Parser from 'rss-parser';
 
 // In-memory cache to store RSS data
-let rssCache: { data: any; timestamp: number; } | null = null;
+interface RSSData {
+  status: string;
+  items: Array<{
+    title: string;
+    link: string;
+    pubDate: string;
+    guid: string;
+    description: string;
+    content: string;
+  }>;
+  source: string;
+  feedTitle?: string;
+  feedDescription?: string;
+  lastBuildDate?: string;
+  warning?: string;
+}
+
+let rssCache: { data: RSSData; timestamp: number; } | null = null;
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 export async function GET(request: Request) {
@@ -24,7 +41,7 @@ export async function GET(request: Request) {
       }
     });
     
-    const rssUrl = 'https://shl.medium.com/feed';
+    const rssUrl = 'https://medium.com/@reserban/feed';
     const feed = await parser.parseURL(rssUrl);
     
     console.log(`Server: Successfully parsed RSS feed with ${feed.items.length} items`);

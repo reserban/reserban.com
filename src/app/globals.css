@@ -79,7 +79,7 @@
   --accent-foreground: oklch(0.9850 0 0);
   --destructive: oklch(0.7040 0.1910 22.2160);
   --destructive-foreground: oklch(0.9850 0 0);
-  --border: oklch(0.6 0 0);
+  --border: oklch(0.25 0 0);
   --input: oklch(0.3250 0 0);
   --ring: oklch(0.5560 0 0);
   --chart-1: oklch(0.8100 0.1000 252);
@@ -227,7 +227,6 @@
   @media (max-width: 640px) {
     .blog-content img,
     .blog-content figure img {
-      @apply rounded-sm; /* Smaller border radius on mobile */
       max-height: 60vh; /* Smaller max height on mobile */
     }
     

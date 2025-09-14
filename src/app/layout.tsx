@@ -15,7 +15,48 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Serban Alex",
-  description: "A hardware prototype of efficiency: does more with less. Runs on curiosity and selective focus. Optimized for high-output bursts, minimal effort, and maximum creativity.",
+  description: "I work alongside leadership teams to cut through complexity and maintain momentum. From automation to research, I help you stay focused on what drives real growth. Speaking fluent 'management,' 'dev' and 'design' to make sure ideas ship faster.",
+  keywords: ["strategic support", "leadership consulting", "product translation", "automation", "research", "growth", "management", "development", "design", "complexity", "momentum"],
+  authors: [{ name: "Serban Alex" }],
+  creator: "Serban Alex",
+  publisher: "Serban Alex",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://reserban.com",
+    title: "Serban Alex",
+    description: "I work alongside leadership teams to cut through complexity and maintain momentum. From automation to research, I help you stay focused on what drives real growth.",
+    siteName: "Serban Alex",
+    images: [
+      {
+        url: "/profile-reserban.png",
+        width: 1200,
+        height: 630,
+        alt: "Serban Alex",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Serban Alex",
+    description: "I work alongside leadership teams to cut through complexity and maintain momentum. Speaking fluent 'management,' 'dev' and 'design' to make sure ideas ship faster.",
+    images: ["/profile-reserban.png"],
+    creator: "@reserban",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code",
+  },
 };
 
 export default function RootLayout({
@@ -38,6 +79,64 @@ export default function RootLayout({
             }
           `
         }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Serban Alex",
+              "url": "https://reserban.com",
+              "image": "https://reserban.com/profile-reserban.png",
+              "jobTitle": "Strategic Support & Product Translation Consultant",
+              "description": "I work alongside leadership teams to cut through complexity and maintain momentum. From automation to research, I help you stay focused on what drives real growth.",
+              "knowsAbout": [
+                "Strategic Support",
+                "Product Translation",
+                "Leadership Consulting",
+                "Automation",
+                "Research",
+                "Growth Strategy",
+                "Management",
+                "Development",
+                "Design"
+              ],
+              "sameAs": [
+                "https://medium.com/@reserban",
+                "https://twitter.com/reserban"
+              ],
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://reserban.com"
+              },
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Independent Consultant"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Serban Alex - Strategic Support & Product Translation",
+              "url": "https://reserban.com",
+              "description": "Strategic support for leadership teams. I help cut through complexity, maintain momentum, and translate between management, dev, and design to ship ideas faster.",
+              "author": {
+                "@type": "Person",
+                "name": "Serban Alex"
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://reserban.com/blog?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </head>
       <body
         className={`${sora.variable} ${geistMono.variable} antialiased font-sans`}

@@ -1,93 +1,65 @@
 "use client";
 
 import Image from "next/image";
-import { Calendar, Clock } from "lucide-react";
-import { useEffect, useState } from "react";
+import { TimeComponent } from "./time-component";
+import { WeatherComponent } from "./weather-component";
 
 export const AboutSection = () => {
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('en-US', {
-      hour12: true,
-      hour: 'numeric',
-      minute: '2-digit',
-      second: '2-digit'
-    });
-  };
-
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
 
   return (
     <section>
       <div className="grid gap-6 md:gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-6 md:gap-8 h-full">
-          <div className="rounded-sm border border-border bg-card p-4 md:p-6">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex size-12 items-center justify-center rounded-full bg-accent overflow-hidden">
-                <Image 
-                  src="/profile-unzet.png" 
-                  alt="Unzet Profile" 
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover"
-                />
+          <div className="border border-border bg-card p-4 md:p-6">
+            <div className="flex items-start gap-4">
+              <div className="relative mr-3 flex-shrink-0">
+                <div className="size-18 overflow-hidden border border-border bg-muted">
+                  <Image 
+                    src="/profile-reserban.png" 
+                    alt="Serban Alex" 
+                    width={64}
+                    height={64}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <a 
+                  href="https://unzet.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="absolute -bottom-2.5 -right-2 size-8bg-black border border-border overflow-hidden cursor-pointer"
+                >
+                  <Image 
+                    src="/profile-unzet.png" 
+                    alt="Unzet Logo" 
+                    width={32}
+                    height={32}
+                    className="object-cover w-full h-full"
+                  />
+                </a>
               </div>
-              <div>
-                <h3 className="font-semibold">Founder</h3>
-                <p className="text-sm text-muted-foreground">Unzet</p>
-              </div>
-            </div>
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="size-4" />
-                <span>Apr 2022 - Present · 3 yrs 6 mos</span>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-lg text-foreground mb-1">Serban Alex</h3>
+                <p className="text-sm text-muted-foreground">Founder, Unzet & Head of Martech/Sidekick, The Conqueror</p>
               </div>
             </div>
           </div>
           
-          <div className="rounded-sm border border-border bg-card p-4 md:p-4 flex-1">
-            <div className="space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="text-xl md:text-2xl font-mono font-bold text-foreground">
-                  {formatTime(currentTime)}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {formatDate(currentTime)}
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 gap-6 md:gap-8">
+            <TimeComponent />
+            <WeatherComponent />
           </div>
         </div>
         
-        <div className="rounded-sm border border-border bg-card p-4 md:p-6">
-          <div className="space-y-4 text-sm text-muted-foreground">
+        <div className="border border-border bg-card p-4 md:p-6">
+          <div className="space-y-5 text-sm text-muted-foreground">
             <p>
-              <strong className="text-foreground">Efficiency over effort:</strong> Why work harder when you can work smarter? 
-              Every system should be optimized for maximum output with minimal input.
+              <strong className="text-foreground">Strategic Support:</strong> I work alongside leadership teams to cut through complexity and maintain momentum. From automation to research, I help you stay focused on what drives real growth.
             </p>
             <p>
-              <strong className="text-foreground">Curiosity as fuel:</strong> The best solutions come from asking &ldquo;why&rdquo; 
-              and &ldquo;what if&rdquo; until you find something that doesn&apos;t exist yet.
+              <strong className="text-foreground">Product Translation:</strong> I speak fluent &ldquo;management,&rdquo; &ldquo;dev&rdquo; and &ldquo;design&rdquo; &ndash; making sure everyone&apos;s on the same page so ideas actually ship faster.
             </p>
             <p>
-              <strong className="text-foreground">Selective focus:</strong> Not everything deserves your attention. 
-              The art is knowing what to ignore so you can excel at what matters.
+              <strong className="text-foreground">Embracing Chaos:</strong> The best solutions emerge from messy problems. I thrive in the uncertainty and help you find clarity in the complexity.
             </p>
           </div>
         </div>
