@@ -63,11 +63,11 @@ export const AnalyticsSection = () => {
           <div className="flex items-center gap-6">
             <div className="flex-shrink-0">
               <div className="text-4xl font-semibold text-accent leading-none">
-                {isLoading ? '----' : visitorCount.toString().padStart(4, '0')}
+                {isLoading ? '------' : visitorCount.toString().padStart(6, '0')}
               </div>
             </div>
             <div className="flex flex-col justify-center gap-1">
-              <p className="text-sm text-white font-medium leading-tight text-left">
+              <p className="text-sm mt-1 text-white font-medium leading-tight text-left">
                 Unique visitors
               </p>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -84,7 +84,7 @@ export const AnalyticsSection = () => {
         <div className="hidden md:block">
           <div className="mb-4">
             <div className="text-3xl font-bold text-accent mb-2">
-              {isLoading ? '----' : visitorCount.toString().padStart(4, '0')}
+              {isLoading ? '------' : visitorCount.toString().padStart(6, '0')}
             </div>
             <p className="text-sm text-white">
               Unique visitors

@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="min-h-screen py-4 md:py-12 bg-background relative">
       {/* TE-style accent bar */}
-      <div className="fixed left-0 top-0 bottom-0 w-1 md:w-2 bg-accent z-10"></div>
+      <div className="fixed left-0 top-0 bottom-0 w-0.5 md:w-2 bg-accent z-10"></div>
       
       
       <div className="container">
