@@ -68,46 +68,51 @@ export const BrevoForm = () => {
       </div>
 
       {/* Form */}
-      <div id="sib-form-container" className="sib-form-container md:-ml-7">
-        <div id="sib-container" className="sib-container--large sib-container--vertical">
-          <form 
-            id="sib-form" 
-            method="POST" 
-            action="https://47dd79c0.sibforms.com/serve/MUIFAEK6UwwTanu2EBA4-VUrOVHMBz6SjmNwfkrSqoslRXgIeGWX6fBi_eJQsvK0R48cOixORfP_1f5OqtYY1DTAzcoHIx0g6tREzfArXxFxnL_DtdBDGfuJpkq-qnQ_AoHSALd6m8icGnuIrM1lsqsAnYr5g3B81gbk9leQs-SwrEyh_kcTe-LrsdSYvyvSrQfU8rzixyAh57lw" 
-            data-type="subscription"
-            className="flex -mb-7 md:-mb-4 ml-1.5 flex-col items-center w-full sm:flex-row sm:justify-center gap-3 sm:gap-0"
+      <div className="flex justify-center w-full px-6 mb-0">
+        <form 
+          id="sib-form" 
+          method="POST" 
+          action="https://47dd79c0.sibforms.com/serve/MUIFAEK6UwwTanu2EBA4-VUrOVHMBz6SjmNwfkrSqoslRXgIeGWX6fBi_eJQsvK0R48cOixORfP_1f5OqtYY1DTAzcoHIx0g6tREzfArXxFxnL_DtdBDGfuJpkq-qnQ_AoHSALd6m8icGnuIrM1lsqsAnYr5g3B81gbk9leQs-SwrEyh_kcTe-LrsdSYvyvSrQfU8rzixyAh57lw" 
+          data-type="subscription"
+          className="flex flex-row items-center gap-5 w-full max-w-xs sm:max-w-sm"
+        >
+          <div className="flex-1 min-w-0">
+            <input 
+              className="h-10 w-full text-sm border border-border bg-card text-foreground px-3 py-2 placeholder:text-muted-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-500 hover:shadow-lg hover:shadow-accent/5 hover:border-accent text-left"
+              type="email" 
+              id="EMAIL" 
+              name="EMAIL" 
+              autoComplete="off" 
+              placeholder="Enter your email" 
+              data-required="true" 
+              required 
+            />
+          </div>
+          
+          <button 
+            className="-ml-3 inline-flex items-center justify-center gap-2 text-sm font-medium border border-border bg-card text-accent transition-all duration-500 hover:shadow-lg hover:shadow-accent/5 hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none h-10 py-2 w-12 sm:w-28 flex-shrink-0"
+            form="sib-form" 
+            type="submit"
           >
-            <div className="sib-input sib-form-block w-full sm:max-w-xs">
-              <div className="form__entry entry_block">
-                <div className="form__label-row">
-                  <div className="entry__field">
-                    <input 
-                        className="input flex text-center h-10 w-full text-sm border border-border bg-card text-foreground px-3 py-2 text-md placeholder:text-muted-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-500 hover:shadow-lg hover:shadow-accent/5 hover:border-accent"
-                      type="email" 
-                      id="EMAIL" 
-                      name="EMAIL" 
-                      autoComplete="off" 
-                      placeholder="Enter your email" 
-                      data-required="true" 
-                      required 
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <button 
-              className="sm:-ml-3 inline-flex items-center justify-center gap-2 text-sm font-medium border border-border bg-card text-accent transition-all duration-500 hover:shadow-lg hover:shadow-accent/5 hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none h-10 py-2 w-65 md:w-28 mt-1 md:mt-0 -ml-4 md:-ml-4.5"
-              form="sib-form" 
-              type="submit"
+            <span className="hidden sm:inline">Subscribe</span>
+            <svg 
+              className="w-4 h-4 sm:hidden" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
             >
-              Subscribe
-            </button>
-            
-            <input type="text" name="email_address_check" defaultValue="" className="hidden" />
-            <input type="hidden" name="locale" value="en" />
-          </form>
-        </div>
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M14 5l7 7m0 0l-7 7m7-7H3" 
+              />
+            </svg>
+          </button>
+          
+          <input type="text" name="email_address_check" defaultValue="" className="hidden" />
+          <input type="hidden" name="locale" value="en" />
+        </form>
       </div>
     </div>
   );
