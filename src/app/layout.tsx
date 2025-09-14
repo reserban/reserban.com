@@ -1,71 +1,21 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { Sora, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const sora = Sora({
-  subsets: ["latin"],
   variable: "--font-sora",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "reSerban | Problem Solving While Chewing Pink Gum",
-    template: "%s | reSerban",
-  },
-  description:
-    "I help C-suites cut through the noise, stay focused, and move with purpose, while driving growth, product clarity, and momentum.",
-
-  metadataBase: new URL("https://www.reserban.com"),
-  keywords: [
-    "C-suite consultant",
-    "executive problem solving",
-    "startup strategy",
-    "product clarity",
-    "growth acceleration",
-    "executive focus",
-    "pink gum",
-    "startup momentum",
-  ],
-  authors: [{ name: "reSerban" }],
-  creator: "reSerban",
-  publisher: "reSerban",
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://www.reserban.com",
-    title: "reSerban | Problem Solving While Chewing Pink Gum",
-    description:
-      "I help C-suites cut through the noise, stay focused, and move with purpose, while driving growth, product clarity, and momentum.",
-    siteName: "reSerban",
-    images: [
-      {
-        url: "https://www.reserban.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Serban Standing",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "reSerban | Problem Solving While Chewing Pink Gum",
-    description:
-      "I help C-suites cut through the noise, stay focused, and move with purpose, while driving growth, product clarity, and momentum.",
-    creator: "@reserban",
-    images: ["https://www.reserban.com/og-image.jpg"],
-  },
+  title: "Serban Alex",
+  description: "A hardware prototype of efficiency: does more with less. Runs on curiosity and selective focus. Optimized for high-output bursts, minimal effort, and maximum creativity.",
 };
 
 export default function RootLayout({
@@ -74,11 +24,52 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
+      <head>
+        <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .sib-form-message-panel.hidden { display: none; }
+            #sib-container,
+            #sib-form-container,
+            .sib-form-container,
+            .sib-container--large {
+              background-color: transparent !important;
+            }
+          `
+        }} />
+      </head>
       <body
-        className={`${sora.variable} antialiased selection:bg-res-600 bg-white selection:text-white`}
+        className={`${sora.variable} ${geistMono.variable} antialiased font-sans`}
+        style={{ fontFamily: 'var(--font-sora), ui-sans-serif, system-ui, sans-serif' }}
       >
         {children}
+        <Script
+          id="brevo-config"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+              window.LOCALE = 'en';
+              window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+              window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank.";
+              window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+              window.translation = {
+                common: {
+                  selectedList: '{quantity} list selected',
+                  selectedLists: '{quantity} lists selected',
+                  selectedOption: '{quantity} selected',
+                  selectedOptions: '{quantity} selected',
+                }
+              };
+              var AUTOHIDE = Boolean(0);
+            `
+          }}
+        />
+        <Script
+          src="https://sibforms.com/forms/end-form/build/main.js"
+          strategy="beforeInteractive"
+        />
       </body>
     </html>
   );

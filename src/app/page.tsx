@@ -1,23 +1,19 @@
-import Hero from "../components/pages/hero";
-import Navbar from "../components/pages/navbar";
-import FAQ from "@/components/pages/faq";
-import Footer from "@/components/pages/footer";
-import Process from "@/components/pages/process";
-import Testimonial from "@/components/pages/testimonial";
-import Values from "@/components/pages/values";
-import StickyCat from "@/components/ui/sticky-cat";
+import { HeroSection } from "@/components/hero-section";
+import { AboutSection } from "@/components/about-section";
+import { NewsletterSection } from "@/components/newsletter-section";
+import { BlogSection } from "@/components/blog-section";
 
 export default function Home() {
   return (
-    <section id="homepage">
-      <Navbar />
-      <Hero />
-      <Values />
-      <Process />
-      <Testimonial />
-      <FAQ />
-      <Footer />
-      <StickyCat />
-    </section>
+    <div className="min-h-screen py-8 md:py-12 bg-background">
+      <div className="container">
+        <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
+          <HeroSection />
+          <AboutSection />
+          <NewsletterSection />
+          <BlogSection />
+        </div>
+      </div>
+    </div>
   );
 }
