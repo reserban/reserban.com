@@ -39,7 +39,7 @@ export const WeatherComponent = () => {
         const getWeatherDescription = (code: number): string => {
           const weatherCodes: { [key: number]: string } = {
             0: "clear",
-            1: "lear",
+            1: "clear",
             2: "cloudy",
             3: "overcast",
             45: "fog",
