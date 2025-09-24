@@ -53,13 +53,13 @@ export const AboutSection = () => {
         <div className="border border-border bg-card p-4 md:p-6">
           <div className="space-y-5 text-sm text-muted-foreground">
             <p>
-              <strong className="text-foreground">Strategic Support:</strong> I work alongside leadership teams to cut through complexity and maintain momentum. From automation to research, I help you stay focused on what drives real growth.
+              <strong className="text-foreground">Strategic Support:</strong> I work side-by-side with teams to cut through the noise and keep things moving. Whether it’s automation, research, or just clearing roadblocks, I&apos;ll do my best.
             </p>
             <p>
-              <strong className="text-foreground">Product Translation:</strong> I speak fluent &ldquo;management,&rdquo; &ldquo;dev&rdquo; and &ldquo;design&rdquo; &ndash; making sure everyone&apos;s on the same page so ideas actually ship faster.
+              <strong className="text-foreground">Product Translation:</strong> I speak “management” “dev” and “design” making sure everyone’s talking the same language so good ideas actually ship faster.
             </p>
             <p>
-              <strong className="text-foreground">Embracing Chaos:</strong> The best solutions emerge from messy problems. I thrive in the uncertainty and help you find clarity in the complexity.
+              <strong className="text-foreground">Embracing Chaos:</strong> The best answers usually come out of messy problems. I’m comfortable in the uncertainty and help turn that chaos into clarity.
             </p>
           </div>
         </div>

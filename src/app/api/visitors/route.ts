@@ -1,55 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 
-interface VisitorData {
-  count: number;
-  lastVisits: Record<string, number>;
-}
+// In-memory storage for the current session
+// This will reset on each deployment, but that's acceptable for a simple visitor counter
+let visitorCount = 4; // Starting from your current count
+const visitedIPs = new Set<string>();
 
-const VISITOR_DATA_PATH = path.join(process.cwd(), 'visitor-data.json');
-const VISIT_COOLDOWN = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+// For production, we'll use a simple approach that works with serverless functions
 
 function getClientIdentifier(request: NextRequest): string {
-  // Try to get real IP address, fallback to user agent for development
+  // Try to get real IP address from various headers
   const forwarded = request.headers.get('x-forwarded-for');
   const realIp = request.headers.get('x-real-ip');
-  const ip = forwarded?.split(',')[0] || realIp;
+  const cfConnectingIp = request.headers.get('cf-connecting-ip'); // Cloudflare
+  const xClientIp = request.headers.get('x-client-ip');
   
-  // In development or if no IP, use user agent as fallback
-  if (!ip || ip === '127.0.0.1' || ip === '::1') {
+  // Get the first IP from forwarded header or use direct IP
+  const ip = forwarded?.split(',')[0]?.trim() || 
+            realIp || 
+            cfConnectingIp || 
+            xClientIp;
+  
+  // In development or if no IP, create a unique identifier
+  if (!ip || ip === '127.0.0.1' || ip === '::1' || ip === 'localhost') {
     const userAgent = request.headers.get('user-agent') || 'unknown';
-    return `dev-${userAgent.substring(0, 20)}`;
+    const timestamp = Date.now();
+    return `dev-${userAgent.substring(0, 20)}-${timestamp}`;
   }
   
   return ip;
 }
 
-function readVisitorData(): VisitorData {
-  try {
-    if (fs.existsSync(VISITOR_DATA_PATH)) {
-      const data = fs.readFileSync(VISITOR_DATA_PATH, 'utf-8');
-      return JSON.parse(data);
-    }
-  } catch (error) {
-    console.error('Error reading visitor data:', error);
-  }
-  
-  return { count: 0, lastVisits: {} };
-}
-
-function writeVisitorData(data: VisitorData): void {
-  try {
-    fs.writeFileSync(VISITOR_DATA_PATH, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error writing visitor data:', error);
-  }
-}
-
 export async function GET() {
   try {
-    const visitorData = readVisitorData();
-    return NextResponse.json({ count: visitorData.count });
+    return NextResponse.json({ count: visitorCount });
   } catch (error) {
     console.error('Error in GET /api/visitors:', error);
     return NextResponse.json({ error: 'Failed to get visitor count' }, { status: 500 });
@@ -59,34 +42,22 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const clientId = getClientIdentifier(request);
-    const now = Date.now();
     
-    const visitorData = readVisitorData();
-    const lastVisit = visitorData.lastVisits[clientId];
-    
-    // Check if this is a new visitor or if enough time has passed
-    if (!lastVisit || (now - lastVisit) > VISIT_COOLDOWN) {
-      visitorData.count += 1;
-      visitorData.lastVisits[clientId] = now;
+    // Simple check: if we haven't seen this IP in this session, count it as a new visitor
+    if (!visitedIPs.has(clientId)) {
+      visitedIPs.add(clientId);
+      visitorCount += 1;
       
-      // Clean up old entries (older than 30 days)
-      const thirtyDaysAgo = now - (30 * 24 * 60 * 60 * 1000);
-      Object.keys(visitorData.lastVisits).forEach(key => {
-        if (visitorData.lastVisits[key] < thirtyDaysAgo) {
-          delete visitorData.lastVisits[key];
-        }
-      });
-      
-      writeVisitorData(visitorData);
+      console.log(`New visitor: ${clientId}, Total count: ${visitorCount}`);
       
       return NextResponse.json({ 
-        count: visitorData.count, 
+        count: visitorCount, 
         isNewVisitor: true 
       });
     }
     
     return NextResponse.json({ 
-      count: visitorData.count, 
+      count: visitorCount, 
       isNewVisitor: false 
     });
   } catch (error) {

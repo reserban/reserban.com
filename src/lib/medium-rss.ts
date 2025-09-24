@@ -1,3 +1,5 @@
+import Parser from 'rss-parser';
+
 export interface MediumPost {
   id: string;
   title: string;
@@ -6,6 +8,7 @@ export interface MediumPost {
   readTime: string;
   link: string;
   guid: string;
+  content?: string; // Optional for client-side usage
 }
 
 interface RSSItem {
@@ -17,6 +20,83 @@ interface RSSItem {
   guid?: string;
 }
 
+interface ParsedRSSItem {
+  title?: string;
+  description?: string;
+  content?: string;
+  contentSnippet?: string;
+  summary?: string;
+  pubDate?: string;
+  link?: string;
+  guid?: string;
+  'content:encoded'?: string;
+  [key: string]: string | undefined;
+}
+
+// Shared function to process RSS items
+function processRSSItems(items: ParsedRSSItem[], includeContent = false): MediumPost[] {
+  return items.slice(0, 10).map((item: ParsedRSSItem, index) => {
+    // Get the full content - try multiple fields (for server-side)
+    const fullContent = item['content:encoded'] || item.content || item.contentSnippet || item.summary || '';
+    const description = item.description || item.contentSnippet || item.summary || '';
+    
+    // Extract excerpt from content (remove HTML tags and limit length)
+    const excerpt = description
+      .replace(/<[^>]*>/g, '') // Remove HTML tags
+      .replace(/&[^;]+;/g, ' ') // Remove HTML entities
+      .trim()
+      .substring(0, 150) + '...';
+    
+    // Estimate read time based on content length (rough estimate)
+    const wordCount = fullContent?.split(' ').length || excerpt.split(' ').length;
+    const readTime = Math.max(1, Math.ceil(wordCount / 200)) + ' min read';
+    
+    const post: MediumPost = {
+      id: item.guid || `medium-post-${index}`,
+      title: item.title || '',
+      excerpt,
+      date: item.pubDate ? new Date(item.pubDate).toISOString().split('T')[0] : '',
+      readTime,
+      link: item.link || '',
+      guid: item.guid || `medium-post-${index}`
+    };
+
+    // Include content only when requested (server-side)
+    if (includeContent) {
+      post.content = fullContent;
+    }
+
+    return post;
+  });
+}
+
+// Server-side function for direct RSS parsing (includes full content)
+export async function fetchMediumPostsServer(): Promise<MediumPost[]> {
+  try {
+    console.log('Server: Fetching RSS data directly');
+    
+    const parser = new Parser({
+      customFields: {
+        item: ['content:encoded', 'content']
+      }
+    });
+    
+    const rssUrl = 'https://medium.com/@reserban/feed';
+    const feed = await parser.parseURL(rssUrl);
+    
+    console.log(`Server: Successfully parsed RSS feed with ${feed.items.length} items`);
+    
+    const posts = processRSSItems(feed.items as ParsedRSSItem[], true); // Include content for server-side
+    
+    console.log(`Server: Processed ${posts.length} posts`);
+    return posts;
+  } catch (error) {
+    console.error('Server: Error fetching Medium posts:', error);
+    return [];
+  }
+}
+
+// Client-side function that uses the API route (no full content)
 export async function fetchMediumPosts(forceRefresh = false): Promise<MediumPost[]> {
   try {
     const cacheBuster = Date.now();
@@ -62,28 +142,7 @@ export async function fetchMediumPosts(forceRefresh = false): Promise<MediumPost
     
     const items: RSSItem[] = data.items;
     
-    return items.map((item, index) => {
-      // Extract excerpt from content (remove HTML tags and limit length)
-      const excerpt = item.description
-        .replace(/<[^>]*>/g, '') // Remove HTML tags
-        .replace(/&[^;]+;/g, ' ') // Remove HTML entities
-        .trim()
-        .substring(0, 150) + '...';
-      
-      // Estimate read time based on content length (rough estimate)
-      const wordCount = item.content?.split(' ').length || excerpt.split(' ').length;
-      const readTime = Math.max(1, Math.ceil(wordCount / 200)) + ' min read';
-      
-      return {
-        id: item.guid || `medium-post-${index}`,
-        title: item.title,
-        excerpt,
-        date: new Date(item.pubDate).toISOString().split('T')[0],
-        readTime,
-        link: item.link,
-        guid: item.guid || `medium-post-${index}`
-      };
-    }).slice(0, 6); // Limit to 6 most recent posts
+    return processRSSItems(items as ParsedRSSItem[], false).slice(0, 6); // Limit to 6 most recent posts for client-side
   } catch (error) {
     console.error('Error fetching Medium posts:', error);
     // Return empty array if RSS fails

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowLeft, ExternalLink } from 'lucide-react';
-import { fetchMediumPostsServer } from '@/lib/medium-rss-server';
+import { fetchMediumPostsServer } from '@/lib/medium-rss';
 
 interface BlogPostPageProps {
   params: {

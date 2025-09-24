@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://reserban.com'),
   title: "Serban Alex",
   description: "I work alongside leadership teams to cut through complexity and maintain momentum. From automation to research, I help you stay focused on what drives real growth. Speaking fluent 'management,' 'dev' and 'design' to make sure ideas ship faster.",
   keywords: ["strategic support", "leadership consulting", "product translation", "automation", "research", "growth", "management", "development", "design", "complexity", "momentum"],
