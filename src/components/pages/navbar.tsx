@@ -60,16 +60,6 @@ const Navbar = () => {
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <NavigationMenuLink
-                      href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
-                      className={navigationMenuTriggerStyle()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Resume
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <NavigationMenuLink
                       href="/about"
                       className={navigationMenuTriggerStyle()}
                     >
@@ -111,14 +101,6 @@ const Navbar = () => {
                     rel="noopener noreferrer"
                   >
                     Logofork
-                  </a>
-                  <a
-                    href="https://drive.google.com/file/d/1oIcpO2xojkqtmzBFQQmnz3U0VRT0lVPy/view?usp=sharing"
-                    className="font-medium"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Resume
                   </a>
                   <Link href="/about" className="font-medium">
                     About
